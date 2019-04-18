@@ -24,7 +24,7 @@ description: Home page for Jesse Dillon Contracting!
 # List of links in the navigation bar
 navbar-links:
   Work History: "https://jdillon-contracting.github.io/"
-  Photo Gallery: "mygallery"
+  Photo Gallery: "gallery"
   Project Estimator: "estimator"
   About Us: "aboutme"
 
