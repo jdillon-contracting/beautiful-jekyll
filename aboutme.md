@@ -1,16 +1,31 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: More about Jesse Dillon's Contracting
 ---
+# Family
+Insert Family Photo
 
-My name is Inigo Montoya. I have the following qualities:
+# Work Practices
++ Only bring the labor necessary to keep your project on-time and in budget
++ Hard working, I will do whatever it takes to get a job done right and to your satisfaction.
++ Dependable, If I make a bid and you hire me I will show up everyday until the job is done.
++ Rise to the occasion, no job is too big or too small
++ Flexible and willing to work with the customer to make sure they get what they need and want
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+# Job Types
++ Decks and Fences
++ Repairs and Remodel
++ Masonry/Stonework
++ Drainage and Flood jobs
++ New Construction
++ Add-ons/Additions
 
-What else do you need?
+### Bid Structure
 
-### my history
+|Distance/Location     |      Bid Cost $ |  
+--- | --- 
+Oakridge/Westfir | $0 |
+Eugene/Springfield (Less than 80 Miles) | $25 |
+Greater than 80 miles | $55 |
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](http://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
