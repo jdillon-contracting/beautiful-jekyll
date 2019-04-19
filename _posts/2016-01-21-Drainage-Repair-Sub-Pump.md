@@ -12,7 +12,7 @@
 + Drained foundation and cleaned up water damage
 + Poured new concrete curb
 
-#Images
+# Images
 ![Trenching1](/gallery/eugene-drainage1/20160209_090456.jpg)
 ![Trenching2](/gallery/eugene-drainage1/20160121_125037.jpg)
 ![Pipe-install1](/gallery/eugene-drainage1/20160121_125045.jpg)
