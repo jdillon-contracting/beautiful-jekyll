@@ -14,7 +14,7 @@
 
 # Images
 ![Fence1](/gallery/eugene-fence1/20150424_080022.jpg)
-![Fence2](/gallery/eugene-fence1/20150424_080036jpg)
+![Fence2](/gallery/eugene-fence1/20150424_080036.jpg)
 ![Fence3](/gallery/eugene-fence1/20150424_080041.jpg)
 ![fence5](/gallery/eugene-fence1/20150424_081536.jpg)
 ![fence6](/gallery/eugene-fence1/20150424_081555.jpg)
