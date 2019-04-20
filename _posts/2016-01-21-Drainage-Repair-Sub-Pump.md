@@ -3,7 +3,7 @@
 # Job Details
 + Crew Members: 2
 + Start Date: January 21st, 2016
-+ Finish Date: February 9th, 2015
++ Finish Date: February 9th, 2016
 + Location: Eugene, Oregon
 
 # Service provided
