@@ -8,8 +8,7 @@ subtitle: Visual gallery of our jobs
 
 ![Inside1](/gallery/framing/0519171528a.jpg)
 ![Inside2](/gallery/framing/0519171528b.jpg)
-![Inside3](/gallery/framing/0519171528c.jpg)
-![Inside4](/gallery/framing/0519171528d.jpg)
+![Inside3](/gallery/framing/0519171528d.jpg)
 ![Exterior1](/gallery/framing/0519171528f.jpg)
 ![InsideGarage](/gallery/framing/0519171529c.jpg)
 
