@@ -9,7 +9,24 @@ use-site-title: true
   var current_selected_type = 'repair';
   function setType(type_in)
   {
-      current_selected_type = type_in; 
+      current_selected_type = type_in;
+    console.log("Current Type set to " + type_in);
+    var fence_div = document.getElementsByClassName("div_fence")[0];
+    var repair_div = document.getElementsByClassName("div_repair")[0];
+    var siding_div = document.getElementsByClassName("div_siding")[0];
+    if(type_in == 'fence'){
+      fence_div.style = "visibility:visible;";
+      repair_div.style = "visibility:hidden;";
+      siding_div.style = "visibility:hidden;";
+    } elif(type_in == 'siding'){
+      fence_div.style = "visibility:hidden;";
+      repair_div.style = "visibility:hidden;";
+      siding_div.style = "visibility:visible;";
+    } elif(type_in === 'repair'){
+      fence_div.style = "visibility:hidden;";
+      repair_div.style = "visibility:visible;";
+      siding_div.style = "visibility:hidden;"; 
+    }
   }
   function sendEmailEstimate()
   {
@@ -24,13 +41,22 @@ use-site-title: true
   }
 </script>
 
-<div class="estiamtor-center">
+<div class="estimator-center">
   <br/>
   <h4>Type of job</h4>
   <form>
-  <input type="radio" name="job_type" value="repair" onclick="setType('repair')" checked> Repair
-  <input type="radio" name="job_type" value="fence" onclick="setType('fence')"> Fences
-  <input type="radio" name="job_type" value="siding" onclick="setType('siding')"> Siding <br/>
+  <input type="radio" name="job_repair" value="repair" onclick="setType('repair')" checked> Repair
+  <input type="radio" name="job_fence" value="fence" onclick="setType('fence')"> Fences
+  <input type="radio" name="job_siding" value="siding" onclick="setType('siding')"> Siding <br/>
+  <div  className="div_repair" style="visibility:visible;" >
+  <input type="button" value="Testing Dev Repair">    
+  </div
+  <div  className="div_fence" style="visibility:hidden;" >
+  <input type="button" value="Testing Dev fence" >    
+  </div
+  <div  className="div_siding" style="visibility:hidden;" >
+  <input type="button" value="Testing Dev siding">    
+  </div
   <input type="button" value="Send Me Your Estimate" onclick="sendEmailEstimate()">
   </form>
 </div>
