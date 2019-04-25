@@ -11,9 +11,9 @@ use-site-title: true
   {
       current_selected_type = type_in;
     console.log("Current Type set to " + type_in);
-    var fence_div = document.getElementsByClassName("div_fence")[0];
-    var repair_div = document.getElementsByClassName("div_repair")[0];
-    var siding_div = document.getElementsByClassName("div_siding")[0];
+    var fence_div = document.getElementById("div_fence");
+    var repair_div = document.getElementById("div_repair");
+    var siding_div = document.getElementById("div_siding");
     if(type_in == 'fence'){
       fence_div.style = "display:block;";
       repair_div.style = "display:none;";
@@ -23,9 +23,9 @@ use-site-title: true
       repair_div.style = "display:none;";
       siding_div.style = "display:block;";
     } else if(type_in === 'repair'){
-      fence_div.style = "display:none;";
-      repair_div.style = "display:block;";
-      siding_div.style = "display:none;"; 
+      fence_div.style = "display: none;";
+      repair_div.style = "display: inline;";
+      siding_div.style = "display: none;"; 
     }
   }
   function sendEmailEstimate()
@@ -48,13 +48,13 @@ use-site-title: true
   <input type="radio" name="job_repair" value="repair" onclick='setJobType("repair")' checked> Repair
   <input type="radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
   <input type="radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding <br/>
-  <div  className="div_repair" style="display:block;" >
+  <div  id="div_repair" style="display: inline;" >
   <input type="button" value="Testing Dev Repair">    
   </div
-  <div  className="div_fence" style="display:none;" >
+  <div  id="div_fence" style="display: none;" >
   <input type="button" value="Testing Dev fence" >    
   </div
-  <div  className="div_siding" style="display:none;" >
+  <div  id="div_siding" style="display: none;" >
   <input type="button" value="Testing Dev siding">    
   </div
   <input type="button" value="Send Me Your Estimate" onclick="sendEmailEstimate()">
