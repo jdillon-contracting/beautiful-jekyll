@@ -14,6 +14,9 @@ use-site-title: true
     var fence_div = document.getElementById("div_fence");
     var repair_div = document.getElementById("div_repair");
     var siding_div = document.getElementById("div_siding");
+    var radio_fence = document.getElementById("fence_radio");
+    var radio_siding = document.getElementById("siding_radio");
+    var radio_repair = document.getElementById("repair_radio");
     if(type_in == 'fence'){
       fence_div.style.display= "inline";
       repair_div.style.display = "none"; 
@@ -45,18 +48,18 @@ use-site-title: true
   <br/>
   <h4>Type of job</h4>
   <form>
-  <input type="radio" name="job_repair" value="repair" onclick='setJobType("repair")' checked> Repair
-  <input type="radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
-  <input type="radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding <br/>
-  <div  id="div_repair" style="display: inline;" >
-  <input type="button" value="Testing Dev Repair">    
-  </div
-  <div  id="div_fence" style="display: none;" >
-  <input type="button" value="Testing Dev fence" >    
-  </div
-  <div  id="div_siding" style="display: none;" >
-  <input type="button" value="Testing Dev siding">    
-  </div
+  <input type="radio" id="repair_radio" name="job_repair" value="repair" onclick='setJobType("repair")' checked> Repair
+  <input type="radio" id="fence_radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
+  <input type="radio" id="siding_radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding <br/>
+    <div  id="div_repair" style="display: inline;" >
+      <input type="button" value="Testing Dev Repair">    
+    </div>
+    <div  id="div_fence" style="display: none;" >
+      <input type="button" value="Testing Dev fence" >    
+    </div>
+    <div  id="div_siding" style="display: none;" >
+      <input type="button" value="Testing Dev siding">    
+    </div>
   <input type="button" value="Send Me Your Estimate" onclick="sendEmailEstimate()">
   </form>
 </div>
