@@ -18,14 +18,20 @@ use-site-title: true
     var radio_siding = document.getElementById("siding_radio");
     var radio_repair = document.getElementById("repair_radio");
     if(type_in == 'fence'){
+      radio_siding.checked = false;
+      radio_repair.checked = false;
       fence_div.style.display= "inline";
       repair_div.style.display = "none"; 
       siding_div.style.display = "none"; 
     } else if(type_in == 'siding'){
+      radio_fence.checked = false;
+      radio_repair.checked = false;
       fence_div.style.display = "none"; 
       repair_div.style.display = "none"; 
       siding_div.style.display= "inline";
     } else if(type_in === 'repair'){
+      radio_siding.checked = false;
+      radio_fence.checked = false;
       fence_div.style.display = "none";
       repair_div.style.display = "inline";
       siding_div.style.display = "none"; 
