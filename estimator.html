@@ -15,17 +15,17 @@ use-site-title: true
     var repair_div = document.getElementsByClassName("div_repair")[0];
     var siding_div = document.getElementsByClassName("div_siding")[0];
     if(type_in == 'fence'){
-      fence_div.style = "visibility:visible;";
-      repair_div.style = "visibility:hidden;";
-      siding_div.style = "visibility:hidden;";
+      fence_div.style = "display:block;";
+      repair_div.style = "display:none;";
+      siding_div.style = "display:none;";
     } else if(type_in == 'siding'){
-      fence_div.style = "visibility:hidden;";
-      repair_div.style = "visibility:hidden;";
-      siding_div.style = "visibility:visible;";
+      fence_div.style = "display:none;";
+      repair_div.style = "display:none;";
+      siding_div.style = "display:block;";
     } else if(type_in === 'repair'){
-      fence_div.style = "visibility:hidden;";
-      repair_div.style = "visibility:visible;";
-      siding_div.style = "visibility:hidden;"; 
+      fence_div.style = "display:none;";
+      repair_div.style = "display:block;";
+      siding_div.style = "display:none;"; 
     }
   }
   function sendEmailEstimate()
@@ -48,13 +48,13 @@ use-site-title: true
   <input type="radio" name="job_repair" value="repair" onclick='setJobType("repair")' checked> Repair
   <input type="radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
   <input type="radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding <br/>
-  <div  className="div_repair" style="visibility:visible;" >
+  <div  className="div_repair" style="display:block;" >
   <input type="button" value="Testing Dev Repair">    
   </div
-  <div  className="div_fence" style="visibility:hidden;" >
+  <div  className="div_fence" style="display:none;" >
   <input type="button" value="Testing Dev fence" >    
   </div
-  <div  className="div_siding" style="visibility:hidden;" >
+  <div  className="div_siding" style="display:none;" >
   <input type="button" value="Testing Dev siding">    
   </div
   <input type="button" value="Send Me Your Estimate" onclick="sendEmailEstimate()">
