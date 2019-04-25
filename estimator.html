@@ -7,18 +7,18 @@ use-site-title: true
 
 <script>
   var current_selected_type = 'repair';
-  func setType(type_in)
+  function setType(type_in)
   {
       current_selected_type = type_in; 
   }
-  func sendEmailEstimate()
+  function sendEmailEstimate()
   {
     var body = 'This is a test of the body statement';
     var subject = 'Bid for ' + current_selected_type + ' job'; 
     window.open('mailto:test@example.com?subject=subject&body=body');
   }
   
-  func markObjectEmpty()
+  function markObjectEmpty()
   {
     
   }
