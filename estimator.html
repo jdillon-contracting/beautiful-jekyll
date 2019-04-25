@@ -13,9 +13,9 @@ use-site-title: true
   }
   function sendEmailEstimate()
   {
-    var body = 'This is a test of the body statement';
-    var subject = 'Bid for ' + current_selected_type + ' job'; 
-    window.open('mailto:test@example.com?subject=subject&body=body');
+    var body_var = 'This%20is%20a%20test%20of%20the%20body%20statement';
+    var subject_var = 'Bid%20for%20' + current_selected_type + '%20job'; 
+    window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
   }
   
   function markObjectEmpty()
