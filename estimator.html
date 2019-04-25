@@ -15,17 +15,17 @@ use-site-title: true
     var repair_div = document.getElementById("div_repair");
     var siding_div = document.getElementById("div_siding");
     if(type_in == 'fence'){
-      fence_div.style = "display:block;";
-      repair_div.style = "display:none;";
-      siding_div.style = "display:none;";
+      fence_div.style.display= "inline";
+      repair_div.style.display = "none"; 
+      siding_div.style.display = "none"; 
     } else if(type_in == 'siding'){
-      fence_div.style = "display:none;";
-      repair_div.style = "display:none;";
-      siding_div.style = "display:block;";
+      fence_div.style.display = "none"; 
+      repair_div.style.display = "none"; 
+      siding_div.style.display= "inline";
     } else if(type_in === 'repair'){
-      fence_div.style = "display: none;";
-      repair_div.style = "display: inline;";
-      siding_div.style = "display: none;"; 
+      fence_div.style.display = "none";
+      repair_div.style.display = "inline";
+      siding_div.style.display = "none"; 
     }
   }
   function sendEmailEstimate()
