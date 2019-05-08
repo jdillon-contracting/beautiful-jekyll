@@ -115,12 +115,12 @@ use-site-title: true
         <input type="button" value="Testing Dev Repair">    
       </div>
       <div  id="div_fence" style="display: none;" >
-        <p><input type="number" class="w3-input w3-border w3-round" min="1" id="flinear" value="1" onchange="recalculateFenceBid();">
-        <label><b>Linear Footage (How long in feet)</b></label></p>
+        <input type="number" class="w3-input w3-border w3-round" min="1" id="flinear" value="1" onchange="recalculateFenceBid();">
+        <label><b>Linear Footage (How long in feet)</b></label>
         <p><input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked>Standard (Dog Eared) <b>$16.50/ft</b>
         <input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'>Custom Pattern <b>$22.50/ft</b></p>
-        <h4>Options</h4>
-        <input type="checkbox" id="fpostcaps" onclick='recalculateFenceBid();'> Fence Caps (8 foot sections) <b>$9 per cap</b><br>
+        <p><h3>Options</h3>
+        <input type="checkbox" id="fpostcaps" onclick='recalculateFenceBid();'> Fence Caps (8 foot sections) <b>$9 per cap</b></p>
         <hr>
         <b>Fence Estimate:</b> <input style="background-color:DimGrey;color:white;" type="text" id="fence_estimate" value="$0.00" readonly>
       </div>
@@ -129,20 +129,20 @@ use-site-title: true
       </div>
     </br>
     <div class="w3-container w3-orange">
-      <h1> Contact Information </h1>
+      <h1>Contact Information </h1>
     </div>
-    <p><input type="text" name="fname">
-    <label>First Name</label></p>
-    <p><input type="text" name="lname">
-    <label>Last Name:</label></p>
+    <input type="text" name="fname"><br>
+    <label>First Name</label>
+    <input type="text" name="lname"><br>
+    <label>Last Name</label>
     <p><input type="tel" id="phone" name="phone"
          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-         required>
+         required><br>
     <label><b>Phone Number</b> Format - 123-456-7890</label></p>
-    <p><input type="text" name="jlocation"><label>Job Location</label></p>        
-    <p><input type="date" id="startDate" name="trip-start"
+    <input type="text" name="jlocation"><br><label> Job Location</label>        
+    <input type="date" id="startDate" name="trip-start"
          value="2019-04-25" min="2019-04-25" max="2020-12-31">
-    <label>Ideal Start Date</label></p>
+    <label>Ideal Start Date</label><br>
     <button type="button" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; ❯</button>
   </div>
 </body>
