@@ -5,6 +5,7 @@ permalink: /estimator.html
 use-site-title: true
 ---
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
   var current_selected_type = 'repair';
   function setDateToday()
@@ -102,41 +103,44 @@ use-site-title: true
   }
 </script>
   <body onload="setDateToday();" >
-  <div class="estimator-center">
+  <div class="w3-container w3-green">
     <h2>Type of job</h2>
-    <form>
-    <input type="radio" id="repair_radio" name="job_repair" value="repair" onclick='setJobType("repair")' checked> Decks
-    <input type="radio" id="fence_radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
-    <input type="radio" id="siding_radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding 
+  </div>
+  <input type="radio" id="repair_radio" name="job_repair" value="repair" onclick='setJobType("repair")' checked> Decks
+  <input type="radio" id="fence_radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
+  <input type="radio" id="siding_radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding
+  <div class="estimator-center">
     <hr>
       <div  id="div_repair" style="display: inline;" >
         <input type="button" value="Testing Dev Repair">    
       </div>
       <div  id="div_fence" style="display: none;" >
-        Fence Linear Footage (How Long): <input type="number" min="1" id="flinear" value="1" onchange="recalculateFenceBid();"> <br>
+        <input type="number" class="w3-input" min="1" id="flinear" value="1" onchange="recalculateFenceBid();">
+        <label><b>Fence Linear Footage<b>(How Long):</label><p>
         <input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked> Standard (Dog Eared) <b>$16.50/ft</b> <br>
         <input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <b>$22.50/ft</b><br>
         <h4>Options</h4>
         <input type="checkbox" id="fpostcaps" onclick='recalculateFenceBid();'> Fence Caps (8 foot sections) <b>$9 per cap</b><br>
-        <b>Fence Estimate:</b> <input type="text" id="fence_estimate" value="$0.00" readonly>
+        <b>Fence Estimate:</b> <input style="background-color:DimGrey;color:white;" type="text" id="fence_estimate" value="$0.00" readonly>
       </div>
       <div  id="div_siding" style="display: none;" >
         <input type="button" value="Testing Dev siding">    
       </div>
     </br>
     <hr>
-    <h1> Contact Information </h1>
+    <div class="w3-container w3-orange">
+      <h1> Contact Information </h1>
+    </div>
     First name: <input type="text" name="fname"><br>
     Last name: <input type="text" name="lname"><br>
     Phone Number: <input type="tel" id="phone" name="phone"
          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-         required><br>
+         required><p>
     &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<b>Format: 123-456-7890</b></br>
-    Job Location:<input type="text" name="jlocation"> </br>
+    <input type="text" name="jlocation"><p>Job Location: </br>
     Ideal Start Date:</br>
     <input type="date" id="startDate" name="trip-start"
          value="2019-04-25" min="2019-04-25" max="2020-12-31"></br>
-    <input type="button" value="Send Me Your Estimate" onclick="sendEmailEstimate()">
-    </form>
+    <button type="button" class="w3-btn w3-padding w3-lightblue" style="width:120px">Send &nbsp; ❯</button>
   </div>
 </body>
