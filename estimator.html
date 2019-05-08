@@ -95,9 +95,9 @@ use-site-title: true
         Fence Linear Footage (How Long): <input type="number" min="1" name="flinear" value="1" onchange="recalculateFenceBid();"> <br>
         <input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked> Standard (Dog Eared) <br>
         <input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <br>
-          <h4> Options</h4>
-          <hr>
-          <input type="checkbox" id="fpostcaps" name="fcaps" value="caps_on" onclick='setFenceCaps()'> <b>Fence Caps</b>
+          <h4> Options</h4> <br>
+          <input type="checkbox" id="fpostcaps" name="fcaps" onclick='setFenceCaps();'> Fence Caps <br>
+        <b>Fence Estimate:</b> <input type="text" id="fence_estimate" value="$4,527" readonly>
       </div>
       <div  id="div_siding" style="display: none;" >
         <input type="button" value="Testing Dev siding">    
