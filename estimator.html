@@ -116,7 +116,7 @@ use-site-title: true
       </div>
       <div  id="div_fence" style="display: none;" >
         <input type="number" class="w3-input" min="1" id="flinear" value="1" onchange="recalculateFenceBid();">
-        <label><b>Fence Linear Footage<b>(How Long):</label><p>
+        <label><b>Fence Linear Footage<b></label><p>
         <input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked> Standard (Dog Eared) <b>$16.50/ft</b> <br>
         <input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <b>$22.50/ft</b><br>
         <h4>Options</h4>
@@ -131,16 +131,18 @@ use-site-title: true
     <div class="w3-container w3-orange">
       <h1> Contact Information </h1>
     </div>
-    First name: <input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br>
-    Phone Number: <input type="tel" id="phone" name="phone"
+    <input type="text" name="fname">
+    <label>First Name</label><p>
+    <input type="text" name="lname">
+    <label>Last Name:</label><p>
+    <input type="tel" id="phone" name="phone"
          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-         required><p>
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<b>Format: 123-456-7890</b></br>
-    <input type="text" name="jlocation"><p>Job Location: </br>
-    Ideal Start Date:</br>
+         required>
+    <label><b>Phone Number</b> Format - 123-456-7890</label><p>
+    <input type="text" name="jlocation"><label>Job Location</label><p>        
     <input type="date" id="startDate" name="trip-start"
-         value="2019-04-25" min="2019-04-25" max="2020-12-31"></br>
-    <button type="button" class="w3-btn w3-padding w3-lightblue" style="width:120px">Send &nbsp; ❯</button>
+         value="2019-04-25" min="2019-04-25" max="2020-12-31">
+    <label>Ideal Start Date</label><p>
+    <button type="button" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; ❯</button>
   </div>
 </body>
