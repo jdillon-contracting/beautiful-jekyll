@@ -63,10 +63,30 @@ use-site-title: true
     } else{
       fence_custom.checked = false;
     }
+    recalculateFenceBid();
   }  
   function recalculateFenceBid()
   {
-    
+    var fence_standard = document.getElementById("fstandard_radio");
+    var fence_feet = document.getElementById("flinear");
+    var fence_custom = document.getElementById("fcustom_radio");
+    var postcaps = document.getElementById("fpostcaps");
+    var fence_estimate = document.getElementById("fence_estimate");
+    var fence_bid = fence_feet.value;
+    if(fence_custom.checked){
+      fence_bid = (fence_bid * 22.50);
+    } else{
+      fence_bid = (fence_bid * 16.50);
+    }
+    if(fpostcaps.checked){
+      var sections = (fence_feet.value / 8);
+      if((sections % 1) >0){
+        sections -= (sections %1);
+        sections += 1;
+      }
+      fence_bid += ( sections * 9);
+      fence_estimate.value = '$' + fence_bid;
+    }
   }  
   function sendEmailEstimate()
   {
@@ -92,12 +112,12 @@ use-site-title: true
         <input type="button" value="Testing Dev Repair">    
       </div>
       <div  id="div_fence" style="display: none;" >
-        Fence Linear Footage (How Long): <input type="number" min="1" name="flinear" value="1" onchange="recalculateFenceBid();"> <br>
-        <input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked> Standard (Dog Eared) <br>
-        <input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <br>
+        Fence Linear Footage (How Long): <input type="number" min="1" id="flinear" value="1" onchange="recalculateFenceBid();"> <br>
+        <input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked> Standard (Dog Eared) <b>$16.50/ft</b> <br>
+        <input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <b>$22.50/ft</b><br>
         <h4>Options</h4>
-        <input type="checkbox" id="fpostcaps" name="fcaps" onclick='setFenceCaps();'> Fence Caps <br>
-        <b>Fence Estimate:</b> <input type="text" id="fence_estimate" value="$4,527" readonly>
+        <input type="checkbox" id="fpostcaps" onclick='recalculateFenceBid();'> Fence Caps (8 foot sections) <b>$9 per cap</b><br>
+        <b>Fence Estimate:</b> <input type="text" id="fence_estimate" value="$0.00" readonly>
       </div>
       <div  id="div_siding" style="display: none;" >
         <input type="button" value="Testing Dev siding">    
