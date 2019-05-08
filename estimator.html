@@ -69,7 +69,7 @@ use-site-title: true
   <body onload="setDateToday();" >
   <div class="estimator-center">
     <br/>
-    <h4>Type of job</h4>
+    <h2>Type of job</h2>
     <form>
     <input type="radio" id="repair_radio" name="job_repair" value="repair" onclick='setJobType("repair")' checked> Decks
     <input type="radio" id="fence_radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
@@ -81,9 +81,9 @@ use-site-title: true
         Fence Linear Footage (How Long): <input type="number" min"1" name="flinear><br>
         <input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked> Standard (Dog Eared) <br>
         <input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <br>
-          <h3> Optional Fence Caps </h3>
+          <h4> Options</h4>
           <hr>
-          <input type="radio" id="fpostcaps" name="fcaps" value="caps_on" onclick='setFenceCaps()'> Fence Caps <br>
+          <input type="radio" id="fpostcaps" name="fcaps" value="caps_on" onclick='setFenceCaps()'> <b>Fence Caps</b> <br>
       </div>
       <div  id="div_siding" style="display: none;" >
         <input type="button" value="Testing Dev siding">    
