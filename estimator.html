@@ -7,6 +7,12 @@ use-site-title: true
 
 <script>
   var current_selected_type = 'repair';
+  function setDateToday()
+  {
+    var dateControl = document.querySelector('input[type="date"]');
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    dateControl.value = date;
+  }
   function setJobType(type_in)
   {
       current_selected_type = type_in;
@@ -49,67 +55,43 @@ use-site-title: true
     
   }
 </script>
-
-<div class="estimator-center">
-  <br/>
-  <h4>Type of job</h4>
-  <form>
-  <input type="radio" id="repair_radio" name="job_repair" value="repair" onclick='setJobType("repair")' checked> Repair
-  <input type="radio" id="fence_radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
-  <input type="radio" id="siding_radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding <br/>
-    <div  id="div_repair" style="display: inline;" >
-      <input type="button" value="Testing Dev Repair">    
-    </div>
-    <div  id="div_fence" style="display: none;" >
-      <input type="button" value="Testing Dev fence" >    
-    </div>
-    <div  id="div_siding" style="display: none;" >
-      <input type="button" value="Testing Dev siding">    
-    </div>
-  </br>
-  </br>
-  <hr>
-  <h1> Contact Information </h1>
-  First name: <input type="text" name="fname"><br>
-  Last name: <input type="text" name="lname"><br>
-  Phone Number: <input type="tel" id="phone" name="phone"
-       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-       required>
-  <span class="note">Format: 123-456-7890</span></br>
-  Job Location: </br>
-  <div>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-  <script src="//js.api.here.com/v3/3.0/mapsjs-core.js"
-  type="text/javascript" charset="utf-8"></script>
-  <script src="//js.api.here.com/v3/3.0/mapsjs-service.js"
-  type="text/javascript" charset="utf-8"></script>
-  </head>
-  <body>
-  <div style="width: 640px; height: 480px" id="mapContainer"></div>
-  <script>
-    // Initialize the platform object:
-    var platform = new H.service.Platform({
-    'app_id': 'GVRxxbk8KSGBDzouCawX',
-    'app_code': 'DLyRmZkOMYyp8JIj61BmBA',
-    useHTTPS: true
-    });
-
-    // Obtain the default map types from the platform object
-    var maptypes = platform.createDefaultLayers();
-
-    // Instantiate (and display) a map object:
-    var map = new H.Map(
-    document.getElementById('mapContainer'),
-    maptypes.normal.map,
-    {
-      zoom: 10,
-      center: { lng: 13.4, lat: 52.51 }
-    });
-  </script>
-  </div><br>
-  Ideal Start Date:</br>
-  <input type="date" id="startDate" name="trip-start"
-       value="2019-04-25" min="2019-04-25" max="2020-12-31"></br>
-  <input type="button" value="Send Me Your Estimate" onclick="sendEmailEstimate()">
-  </form>
-</div>
+  <body onload="setDateToday();" >
+  <div class="estimator-center">
+    <br/>
+    <h4>Type of job</h4>
+    <form>
+    <input type="radio" id="repair_radio" name="job_repair" value="repair" onclick='setJobType("repair")'> checked> Decks
+    <input type="radio" id="fence_radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
+    <input type="radio" id="siding_radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding <br/>
+      <div  id="div_repair" style="display: inline;" >
+        <input type="button" value="Testing Dev Repair">    
+      </div>
+      <div  id="div_fence" style="display: none;" >
+        Fence Linear Footage (How Long): <input type="number" min"1" name="flinear><br>
+        <input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked> Standard (Dog Eared) <br>
+        <input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <br>
+          <h3> Optional Fence Caps </h3>
+          <hr>
+          <input type="radio" id="fpostcaps" name="fcaps" value="caps_on" onclick='setFenceCaps()'> Fence Caps <br>
+      </div>
+      <div  id="div_siding" style="display: none;" >
+        <input type="button" value="Testing Dev siding">    
+      </div>
+    </br>
+    </br>
+    <hr>
+    <h1> Contact Information </h1>
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    Phone Number: <input type="tel" id="phone" name="phone"
+         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+         required>
+    <span class="note">Format: 123-456-7890</span></br>
+    Job Location:<input type="text" name="jlocation"> </br>
+    Ideal Start Date:</br>
+    <input type="date" id="startDate" name="trip-start"
+         value="2019-04-25" min="2019-04-25" max="2020-12-31"></br>
+    <input type="button" value="Send Me Your Estimate" onclick="sendEmailEstimate()">
+    </form>
+  </div>
+</body>
