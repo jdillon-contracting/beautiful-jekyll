@@ -11,7 +11,17 @@ use-site-title: true
   {
     var dateControl = document.querySelector('input[type="date"]');
     var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var month = today.getMonth()+1;
+    var day = today.getDate();
+    
+    var date = today.getFullYear()+'-'
+    if(month < 10){ 
+      month = ('0' + month);
+    }
+    if(day < 10){
+      day = ('0'+ day);
+    }
+    date += month + '-' + day'
     dateControl.value = date;
   }
   function setJobType(type_in)
