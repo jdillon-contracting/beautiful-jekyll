@@ -54,6 +54,20 @@ use-site-title: true
       siding_div.style.display = "none"; 
     }
   }
+  function setFenceType(fence_type)
+  {
+    var fence_standard = document.getElementById("fstandard_radio");
+    var fence_custom = document.getElementById("fcustom_radio");
+    if(fence_type == 'c'){
+      fence_standard.checked = false;
+    } else{
+      fence_custom.checked = false;
+    }
+  }  
+  function recalculateFenceBid()
+  {
+    
+  }  
   function sendEmailEstimate()
   {
     var body_var = 'This%20is%20a%20test%20of%20the%20body%20statement';
@@ -78,12 +92,12 @@ use-site-title: true
         <input type="button" value="Testing Dev Repair">    
       </div>
       <div  id="div_fence" style="display: none;" >
-        Fence Linear Footage (How Long): <input type="number" min"1" name="flinear"> <br>
+        Fence Linear Footage (How Long): <input type="number" min="1" name="flinear" value="1" onchange="recalculateFenceBid();"> <br>
         <input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked> Standard (Dog Eared) <br>
         <input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <br>
           <h4> Options</h4>
           <hr>
-          <input type="radio" id="fpostcaps" name="fcaps" value="caps_on" onclick='setFenceCaps()'> <b>Fence Caps</b> <br>
+          <input type="checkbox" id="fpostcaps" name="fcaps" value="caps_on" onclick='setFenceCaps()'> <b>Fence Caps</b> <br>
       </div>
       <div  id="div_siding" style="display: none;" >
         <input type="button" value="Testing Dev siding">    
