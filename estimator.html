@@ -117,7 +117,7 @@ use-site-title: true
       <div  id="div_fence" style="display: none;" >
         <p><input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked>Standard (Dog Eared) <b>$16.50/ft</b>
         &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'>Custom Pattern <b>$22.50/ft</b></p>
-        <input type="number" class="w3-input w3-border w3-round" min="1" id="flinear" value="1" onchange="recalculateFenceBid();">
+        <input type="number" class="w3-input w3-border w3-round" min="1" id="flinear" value="45" onchange="recalculateFenceBid();">
         <label><b>Linear Footage (How long in feet)</b></label>
         <p><h3>Options</h3>
         <input type="checkbox" id="fpostcaps" onclick='recalculateFenceBid();'> Fence Caps (8 foot sections) <b>$9 per cap</b></p>
@@ -135,10 +135,10 @@ use-site-title: true
     <label>First Name</label><br>
     <input type="text" name="lname"><br>
     <label>Last Name</label><br>
-    <p><input type="tel" id="phone" name="phone"
+    <input type="tel" id="phone" name="phone"
          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-         required><br>
-    <label><b>Phone Number</b> Format - 123-456-7890</label><br>
+         required>&nbsp;&nbsp;Format:123-456-7890<br>
+    <label><b>Phone Number</b></label><br>
     <input type="text" name="jlocation"><br><label> Job Location</label><br>        
     <input type="date" id="startDate" name="trip-start"
          value="2019-04-25" min="2019-04-25" max="2020-12-31"><br>
