@@ -79,9 +79,9 @@ use-site-title: true
   Job Location: </br>
   <div>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-  <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
+  <script src="//js.api.here.com/v3/3.0/mapsjs-core.js"
   type="text/javascript" charset="utf-8"></script>
-  <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
+  <script src="//js.api.here.com/v3/3.0/mapsjs-service.js"
   type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -90,7 +90,8 @@ use-site-title: true
     // Initialize the platform object:
     var platform = new H.service.Platform({
     'app_id': 'GVRxxbk8KSGBDzouCawX',
-    'app_code': 'DLyRmZkOMYyp8JIj61BmBA'
+    'app_code': 'DLyRmZkOMYyp8JIj61BmBA',
+    useHTTPS: true
     });
 
     // Obtain the default map types from the platform object
