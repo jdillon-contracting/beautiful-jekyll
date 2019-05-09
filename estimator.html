@@ -94,15 +94,26 @@ use-site-title: true
   }  
   function sendEmailEstimate()
   {
-    var body_var = 'This%20is%20a%20test%20of%20the%20body%20statement';
-    var subject_var = 'Bid%20for%20' + current_selected_type + '%20job'; 
-    window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
+    var contact_div = document.getElementById("contact_div");
+    if(contact_div.display == "none"){
+      contact_div.display = "inline";
+      var edit_btn = document.getElementById("edit_btn");
+      edit_btn.display = "inline";
+    } else if(checkContactInformationForm()){
+      var body_var = 'This%20is%20a%20test%20of%20the%20body%20statement';
+      var subject_var = 'Bid%20for%20' + current_selected_type + '%20job'; 
+      window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
+    }
   }
   function toggleFenceCaps()
   {
     var fenceCaps = document.getElementById("fpostcaps");
     fpostcaps.checked = !fpostcaps.checked;
     recalculateFenceBid();
+  }
+  function checkContactInformationForm()
+  {
+      return false; 
   }
   function markObjectEmpty()
   {
@@ -136,21 +147,26 @@ use-site-title: true
         <input type="button" value="Testing Dev siding">    
       </div>
     </br>
-    <div class="w3-container w3-orange">
-      <h1>Contact Information </h1>
+    <div id="contact_div" display="none" >
+      <div class="w3-container w3-orange">
+        <h1>Contact Information </h1>
+      </div>
+      <input type="text" name="fname"><br>
+      <label>First Name</label><br>
+      <input type="text" name="lname"><br>
+      <label>Last Name</label><br>
+      <input type="tel" id="phone" name="phone"
+           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+           required>&nbsp;&nbsp;Format:123-456-7890<br>
+      <label><b>Phone Number</b></label><br>
+      <input type="text" name="jlocation"><br><label> Job Location</label><br>        
+      <input type="date" id="startDate" name="trip-start"
+           value="2019-04-25" min="2019-04-25" max="2020-12-31"><br>
+      <label>Ideal Start Date</label><br>
+      <p>
+        <button id="edit_btn" display="none" type="button" class="w3-btn w3-padding w3-orange" style="width:160x">< &nbsp; Edit Estimate &nbsp;</button>
+        <button type="button" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; ❯</button>
+      </p>
     </div>
-    <input type="text" name="fname"><br>
-    <label>First Name</label><br>
-    <input type="text" name="lname"><br>
-    <label>Last Name</label><br>
-    <input type="tel" id="phone" name="phone"
-         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-         required>&nbsp;&nbsp;Format:123-456-7890<br>
-    <label><b>Phone Number</b></label><br>
-    <input type="text" name="jlocation"><br><label> Job Location</label><br>        
-    <input type="date" id="startDate" name="trip-start"
-         value="2019-04-25" min="2019-04-25" max="2020-12-31"><br>
-    <label>Ideal Start Date</label><br>
-    <button type="button" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; ❯</button>
   </div>
 </body>
