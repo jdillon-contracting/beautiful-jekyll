@@ -95,10 +95,12 @@ use-site-title: true
   function sendEmailEstimate()
   {
     var contact_div = document.getElementById("contact_div");
+    var estimator_center = document.getElementById("estimator_center");
     if(contact_div.style.display == "none"){
       contact_div.style.display = "inline";
       var edit_btn = document.getElementById("edit_btn");
       edit_btn.style.display = "inline";
+      estimator_center.style.display = "none";
     } else if(checkContactInformationForm()){
       var body_var = 'This%20is%20a%20test%20of%20the%20body%20statement';
       var subject_var = 'Bid%20for%20' + current_selected_type + '%20job'; 
@@ -114,6 +116,15 @@ use-site-title: true
   {
       return false; 
   }
+  function backToEstimator()
+  {
+    var contact_div = document.getElementById("contact_div");
+    var estimator_center = document.getElementById("estimator_center");
+    var edit_btn = document.getElementById("edit_btn");
+    contact_div.style.display = "none";
+    edit_btn.style.display = "none";
+    estimator_center.style.display = "inline";
+  }
   function markObjectEmpty()
   {
     
@@ -128,7 +139,7 @@ use-site-title: true
   &nbsp;&nbsp;<input type="radio" id="fence_radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
   &nbsp;&nbsp;<input type="radio" id="siding_radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding</p>
   </b>
-  <div class="estimator-center">
+  <div id="estimator_center">
       <div  id="div_repair" style="display: inline;" >
         <input type="button" value="Testing Dev Repair">    
       </div>
@@ -146,6 +157,7 @@ use-site-title: true
         <input type="button" value="Testing Dev siding">    
       </div>
     </br>
+    </div>
     <div id="contact_div" style="display: none;" >
       <div class="w3-container w3-orange">
         <h1>Contact Information </h1>
@@ -162,8 +174,8 @@ use-site-title: true
       <input type="date" id="startDate" name="trip-start"
            value="2019-04-25" min="2019-04-25" max="2020-12-31"><br>
       <label>Ideal Start Date</label><br>
-        <button id="edit_btn" type="button" class="w3-btn w3-padding w3-orange" style="width:160x;display:none;">< &nbsp; Edit Estimate &nbsp;</button>
     </div>
-    <button type="button" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; ❯</button>
-  </div>
+    <p><button id="edit_btn" type="button" class="w3-btn w3-padding w3-orange" style="width:160x;display:none;" onclick="backToEstimator();">< &nbsp; Edit Estimate &nbsp;</button>
+    <button type="button" class="w3-btn w3-padding w3-teal" style="width:120px" onclick="sendEmailEstimate();">Send &nbsp; ❯</button>
+    </p>
 </body>
