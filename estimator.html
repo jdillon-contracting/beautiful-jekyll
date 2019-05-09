@@ -62,8 +62,10 @@ use-site-title: true
     var fence_custom = document.getElementById("fcustom_radio");
     if(fence_type == 'c'){
       fence_standard.checked = false;
+      fence_custom.checked = true;
     } else{
       fence_custom.checked = false;
+      fence_standard.checked = true;
     }
     recalculateFenceBid();
   }  
@@ -96,7 +98,12 @@ use-site-title: true
     var subject_var = 'Bid%20for%20' + current_selected_type + '%20job'; 
     window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
   }
-  
+  function toggleFenceCaps()
+  {
+    var fenceCaps = document.getElementById("fpostcaps");
+    fpostcaps.checked = !fpostcaps.checked;
+    recalculateFenceBid();
+  }
   function markObjectEmpty()
   {
     
@@ -116,12 +123,12 @@ use-site-title: true
         <input type="button" value="Testing Dev Repair">    
       </div>
       <div  id="div_fence" style="display: none;" >
-        <p><img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/Dog-Ear-Fence.jpg?raw=true" alt="Standard Fence" height="63" width="100"><input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s")' checked> Standard (Dog Eared) <b>$16.50 per foot</b><br>
-        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/Custom-Fence.png?raw=true" alt="Custom Fence" height="64" width="164"><input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <b>$22.50 per foot</b></p>
+        <p><img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/Dog-Ear-Fence.jpg?raw=true" alt="Standard Fence" height="63" width="100" onclick='setFenceType("s");' ><input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s");' checked> Standard (Dog Eared) <b>$16.50 per foot</b><br>
+        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/Custom-Fence.png?raw=true" alt="Custom Fence" height="64" width="164" onclick='setFenceType("c");' ><input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <b>$22.50 per foot</b></p>
         <input type="number" class="w3-input w3-border w3-round" min="1" id="flinear" value="45" onchange="recalculateFenceBid();">
         <label><b>Linear Footage (How long in feet)</b></label>
         <p><h3>Options</h3>
-        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/fence_board_caps.png?raw=true" alt="Fence Post Caps" height="58" width="203"><input type="checkbox" id="fpostcaps" onclick='recalculateFenceBid();'> Fence Caps (8 foot sections) <b>$9 per cap</b></p>
+        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/fence_board_caps.png?raw=true" alt="Fence Post Caps" height="58" width="203" onclick='toggleFenceCaps();'><input type="checkbox" id="fpostcaps" onclick='toggleFenceCaps();'> Fence Caps (8 foot sections) <b>$9 per cap</b></p>
         <hr>
         <b>Fence Estimate:</b> <input style="background-color:DimGrey;color:white;" type="text" id="fence_estimate" value="$0.00" readonly><br>
       </div>
