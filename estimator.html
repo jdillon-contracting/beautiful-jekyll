@@ -95,10 +95,10 @@ use-site-title: true
   function sendEmailEstimate()
   {
     var contact_div = document.getElementById("contact_div");
-    if(contact_div.display == "none"){
-      contact_div.display = "inline";
+    if(contact_div.style.display == "none"){
+      contact_div.style.display = "inline";
       var edit_btn = document.getElementById("edit_btn");
-      edit_btn.display = "inline";
+      edit_btn.style.display = "inline";
     } else if(checkContactInformationForm()){
       var body_var = 'This%20is%20a%20test%20of%20the%20body%20statement';
       var subject_var = 'Bid%20for%20' + current_selected_type + '%20job'; 
@@ -147,7 +147,7 @@ use-site-title: true
         <input type="button" value="Testing Dev siding">    
       </div>
     </br>
-    <div id="contact_div" display="none" >
+    <div id="contact_div" style="display: none;" >
       <div class="w3-container w3-orange">
         <h1>Contact Information </h1>
       </div>
@@ -164,7 +164,7 @@ use-site-title: true
            value="2019-04-25" min="2019-04-25" max="2020-12-31"><br>
       <label>Ideal Start Date</label><br>
       <p>
-        <button id="edit_btn" display="none" type="button" class="w3-btn w3-padding w3-orange" style="width:160x">< &nbsp; Edit Estimate &nbsp;</button>
+        <button id="edit_btn" type="button" class="w3-btn w3-padding w3-orange" style="width:160x;display:none;">< &nbsp; Edit Estimate &nbsp;</button>
         <button type="button" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; ❯</button>
       </p>
     </div>
