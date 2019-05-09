@@ -77,7 +77,7 @@ use-site-title: true
     var postcaps = document.getElementById("fpostcaps");
     var fence_estimate = document.getElementById("fence_estimate");
     var estimate_output = document.getElementById("estimate_output");
-    estimate_output.innerHTML = fence_feet.value + " foot long ";
+    estimate_output.innerHTML = "<b>Bid Estimate</b> for a " + fence_feet.value + " foot long ";
     var fence_bid = fence_feet.value;
     if(fence_custom.checked){
       fence_bid = (fence_bid * 22.50);
