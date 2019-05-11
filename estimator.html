@@ -28,7 +28,7 @@ use-site-title: true
   }
   function setJobType(type_in)
   {
-      current_selected_type = type_in;
+    current_selected_type = type_in;
     console.log("Current Type set to " + type_in);
     var fence_div = document.getElementById("div_fence");
     var repair_div = document.getElementById("div_repair");
@@ -123,7 +123,28 @@ use-site-title: true
   }
   function checkContactInformationForm()
   {
-      return false; 
+      var fname = document.getElementById("fname");
+      var lname = document.getElementById("lname");
+      var location = document.getElementById("jlocation");
+      var phone = document.getElementById("phone");
+      var ready_to_send = true;
+      if(phone.value.length == 0){
+        phone.style = "background-color:red;";
+        ready_to_send = false;
+      }
+      if(fname.value.length == 0){
+        fname.style = "background-color:red;";
+        ready_to_send = false;
+      }
+      if(lname.value.length == 0){
+        lname.style = "background-color:red;";
+        ready_to_send = false;
+      }
+      if(location.value.length == 0){
+        location.style = "background-color:red;";
+        ready_to_send = false;
+      }
+      return ready_to_send; 
   }
   function backToEstimator()
   {
@@ -171,15 +192,15 @@ use-site-title: true
       <div class="w3-container w3-orange">
         <h1>Contact Information </h1>
       </div>
-      <input type="text" name="fname"><br>
+      <input type="text" id="fname"><br>
       <label>First Name</label><br>
-      <input type="text" name="lname"><br>
+      <input type="text" id="lname"><br>
       <label>Last Name</label><br>
-      <input type="tel" id="phone" name="phone"
+      <input type="tel" id="phone"
            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
            required>&nbsp;&nbsp;Format:123-456-7890<br>
       <label><b>Phone Number</b></label><br>
-      <input type="text" name="jlocation"><br><label> Job Location</label><br>        
+      <input type="text" id="jlocation"><br><label> Job Location</label><br>        
       <input type="date" id="startDate" name="trip-start"
            value="2019-04-25" min="2019-04-25" max="2020-12-31"><br>
       <label>Ideal Start Date</label><br>
@@ -187,7 +208,7 @@ use-site-title: true
       </div>
       <input style="background-color:DimGrey;color:white;" type="text" id="send_estimate" value="$0.00" readonly><br>
     </div>
-    <p><button id="edit_btn" type="button" class="w3-btn w3-padding w3-orange" style="width:160x;display:none;" onclick="backToEstimator();">< &nbsp; Edit Estimate &nbsp;</button>
+    <p><button id="edit_btn" type="button" class="w3-btn w3-padding w3-green" style="width:160x;display:none;" onclick="backToEstimator();">< &nbsp; Edit Estimate &nbsp;</button>
     <button type="button" class="w3-btn w3-padding w3-teal" style="width:120px" onclick="sendEmailEstimate();">Send &nbsp; ❯</button>
     </p>
 </body>
