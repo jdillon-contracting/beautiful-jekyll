@@ -117,7 +117,7 @@ use-site-title: true
       var radio_fence = document.getElementById("fence_radio");
       var radio_siding = document.getElementById("siding_radio");
       var radio_repair = document.getElementById("repair_radio");
-      var location = document.getElementById("jlocation");
+      var jlocation = document.getElementById("jlocation");
       var job_type = "";
       var estimate = document.getElementById("send_estimate");
       var estimate_amount = estimate.value;
@@ -131,7 +131,7 @@ use-site-title: true
       if(radio_repair.checked){
         job_type = "%20repair job!";
       }
-      var loc = location.value;
+      var loc = jlocation.value;
       loc.replace(' ', '%20');
       
       var estimate_o = estimate_output.innerHTML;
