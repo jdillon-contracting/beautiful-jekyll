@@ -146,6 +146,34 @@ use-site-title: true
       }
       return ready_to_send; 
   }
+  function updateFirstName()
+  {  
+    var fname = document.getElementById("fname");
+    if(fname.value.length > 0){
+      fname.style = "background-color:white";
+    }
+  }
+  function updateLastName()
+  {  
+    var lname = document.getElementById("lname");
+    if(lname.value.length > 0){
+      lname.style = "background-color:white";
+    }
+  }
+  function updatePhone()
+  {  
+    var phone = document.getElementById("phone");
+    if(phone.value.length > 0){
+      phone.style = "background-color:white";
+    }
+  }
+  function updateLocation()
+  {  
+    var location = document.getElementById("jlocation");
+    if(location.value.length > 0){
+      location.style = "background-color:white";
+    }
+  }
   function backToEstimator()
   {
     var contact_div = document.getElementById("contact_div");
@@ -157,7 +185,6 @@ use-site-title: true
   }
   function markObjectEmpty()
   {
-    
   }
 </script>
   <body onload="setDateToday();" >
@@ -192,15 +219,15 @@ use-site-title: true
       <div class="w3-container w3-orange">
         <h1>Contact Information </h1>
       </div>
-      <input type="text" id="fname"><br>
+      <input type="text" id="fname" onchange="updateFirstName();"><br>
       <label>First Name</label><br>
-      <input type="text" id="lname"><br>
+      <input type="text" id="lname" onchange="updateLastName();"><br>
       <label>Last Name</label><br>
-      <input type="tel" id="phone"
+      <input type="tel" id="phone" onchange="updatePhone();"
            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
            required>&nbsp;&nbsp;Format:123-456-7890<br>
       <label><b>Phone Number</b></label><br>
-      <input type="text" id="jlocation"><br><label> Job Location</label><br>        
+      <input type="text" id="jlocation" onchange="updateLocation();"><br><label> Job Location</label><br>        
       <input type="date" id="startDate" name="trip-start"
            value="2019-04-25" min="2019-04-25" max="2020-12-31"><br>
       <label>Ideal Start Date</label><br>
