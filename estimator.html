@@ -140,7 +140,7 @@ use-site-title: true
       var body_var = 'Job%20Location:%20' + loc + '%0D%0A' + 'Job%20Details:%20'+estimate_o + '%0D%0A' +
           "Add%20More%20Details%20and%20Attach%20Photos:" + '%0D%0A' + '%0D%0A' + '%0D%0A';
       var subject_var = fname.value + '%20is%20requesting%20an%20estimate%20for%20a%20' +  estimate_amount + job_type;
-      location.href ='mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var;
+      window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
     }
   }
   function toggleFenceCaps()
