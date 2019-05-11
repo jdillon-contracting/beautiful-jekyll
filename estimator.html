@@ -29,7 +29,6 @@ use-site-title: true
   function setJobType(type_in)
   {
     current_selected_type = type_in;
-    console.log("Current Type set to " + type_in);
     var fence_div = document.getElementById("div_fence");
     var repair_div = document.getElementById("div_repair");
     var siding_div = document.getElementById("div_siding");
@@ -110,8 +109,35 @@ use-site-title: true
       edit_btn.style.display = "inline";
       estimator_center.style.display = "none";
     } else if(checkContactInformationForm()){
-      var body_var = 'This%20is%20a%20test%20of%20the%20body%20statement';
-      var subject_var = 'Bid%20for%20' + current_selected_type + '%20job'; 
+      
+      var fname = document.getElementById("fname");
+      var lname = document.getElementById("lname");
+      var location = document.getElementById("jlocation");
+      var phone = document.getElementById("phone");
+      var radio_fence = document.getElementById("fence_radio");
+      var radio_siding = document.getElementById("siding_radio");
+      var radio_repair = document.getElementById("repair_radio");
+      var location = document.getElementById("jlocation");
+      var job_type = "";
+      var estimate = document.getElementById("send_estimate");
+      var estimate_amount = estimate.value;
+      var estimate_output = document.getElementById("estimate_output");
+      if(radio_fence.checked){
+        job_type = "%20fence job!";
+      } else
+      if(radio_siding.checked){
+        job_type = "%20siding job!";
+      } else 
+      if(radio_repair.checked){
+        job_type = "%20repair job!";
+      }
+      var loc = location.value;
+      loc.replace(' ', '%20');
+      
+      var estimate_o = estimate_output.value;
+      estimate_o.replace(' ', '%20');
+      var body_var = 'Job%20Location:%20' + loc + '\r\nJob%20Details:%20'+estimate_o;
+      var subject_var = fname.value + '%20is%20requesting%20an%20estimate%20for%20a%20' +  estimate_amount + job_type;
       window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
     }
   }
@@ -182,9 +208,6 @@ use-site-title: true
     contact_div.style.display = "none";
     edit_btn.style.display = "none";
     estimator_center.style.display = "inline";
-  }
-  function markObjectEmpty()
-  {
   }
 </script>
   <body onload="setDateToday();" >
