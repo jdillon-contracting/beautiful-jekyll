@@ -137,7 +137,7 @@ use-site-title: true
       var estimate_o = estimate_output.innerHTML;
       estimate_o = estimate_o.slice(26);
       estimate_o.replace(' ', '%20');
-      var body_var = 'Job%20Location:%20' + loc + '\r\n' + 'Job%20Details:%20'+estimate_o + '\r\n' + "Add%20More%20Details%20and %20Attach%20Photos:" + '\r\n';
+      var body_var = 'Job%20Location:%20' + loc + '%3C%2Fbr%3E' + 'Job%20Details:%20'+estimate_o + '%3C%2Fbr%3E' + "Add%20More%20Details%20and %20Attach%20Photos:" + '%3C%2Fbr%3E';
       var subject_var = fname.value + '%20is%20requesting%20an%20estimate%20for%20a%20' +  estimate_amount + job_type;
       window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
     }
