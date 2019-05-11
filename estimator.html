@@ -131,7 +131,7 @@ use-site-title: true
       if(radio_repair.checked){
         job_type = "%20repair job!";
       }
-      var loc = location.value;
+      var loc = location.innerHTML;
       loc.replace(' ', '%20');
       
       var estimate_o = estimate_output.value;
