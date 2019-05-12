@@ -7,7 +7,7 @@ use-site-title: true
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
-  var current_selected_type = 'repair';
+  var open_window = null;
   function setDateToday()
   {
     var dateControl = document.querySelector('input[type="date"]');
@@ -28,7 +28,6 @@ use-site-title: true
   }
   function setJobType(type_in)
   {
-    current_selected_type = type_in;
     var fence_div = document.getElementById("div_fence");
     var repair_div = document.getElementById("div_repair");
     var siding_div = document.getElementById("div_siding");
@@ -145,7 +144,8 @@ use-site-title: true
       var dateControl = document.querySelector('input[type="date"]');
       body_var += "Ideal%20Start%20Date:%20" + dateControl.value;
       var subject_var = fname.value + '%20is%20requesting%20an%20estimate%20for%20a%20' +  estimate_amount + job_type;
-      window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
+      open_window = window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
+      setTimeout(function(){if(open_window !== null){open_window.close();} }, 1200);
     }
   }
   function toggleFenceCaps()
