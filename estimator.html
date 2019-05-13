@@ -171,7 +171,7 @@ use-site-title: true
       body_var += "Client%20Name:%20"+ fname.value + "%20" + lname.value + '%0D%0A';
       body_var += "Phone%20Number:%20" + phone.value + '%0D%0A';
       var dateControl = document.querySelector('input[type="date"]');
-      body_var += "Ideal%20Start%20Date:%20" + dateControl.value + '%0D%0A' + '%0D%0A' + '%0D%0A'+ '%0D%0A";
+      body_var += "Ideal%20Start%20Date:%20" + dateControl.value + '%0D%0A' + '%0D%0A' + '%0D%0A'+ '%0D%0A';
       var subject_var = fname.value + '%20is%20requesting%20an%20estimate%20for%20a%20' +  estimate_amount + job_type;
       open_window = window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
       setTimeout(function(){if(open_window !== null){open_window.close();} }, 1200);
