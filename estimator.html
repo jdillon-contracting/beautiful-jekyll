@@ -29,7 +29,7 @@ use-site-title: true
   function setJobType(type_in)
   {
     var fence_div = document.getElementById("div_fence");
-    var repair_div = document.getElementById("div_repair");
+    var deck_div = document.getElementById("div_deck");
     var siding_div = document.getElementById("div_siding");
     var radio_fence = document.getElementById("fence_radio");
     var radio_siding = document.getElementById("siding_radio");
@@ -38,18 +38,18 @@ use-site-title: true
       radio_siding.checked = false;
       decks_radio.checked = false;
       fence_div.style.display= "inline";
-      repair_div.style.display = "none"; 
+      deck_div.style.display = "none"; 
       siding_div.style.display = "none"; 
     } else if(type_in == 'siding'){
       radio_fence.checked = false;
       decks_radio.checked = false;
-      fence_div.style.display = "none"; 
+      deck_div.style.display = "none"; 
       repair_div.style.display = "none"; 
       siding_div.style.display= "inline";
     } else if(type_in === 'deck'){
       radio_siding.checked = false;
       radio_fence.checked = false;
-      fence_div.style.display = "none";
+      deck_div.style.display = "none";
       repair_div.style.display = "inline";
       siding_div.style.display = "none"; 
     }
@@ -254,7 +254,7 @@ use-site-title: true
   &nbsp;&nbsp;<input type="radio" id="fence_radio" value="fence" onclick='setJobType("fence")'> Fences
   &nbsp;&nbsp;<input type="radio" id="siding_radio" value="siding" onclick='setJobType("siding")'> Siding
   </b></h3>
-      <div  id="div_repair" style="display: inline;" >
+      <div  id="div_deck" style="display: inline;" >
         <input type="number" class="w3-input w3-border w3-round" min="4" id="deckwidth" value="6" onchange="recalculateDeckBid();">
         <label><b>Width of Deck</b></label>
         <input type="number" class="w3-input w3-border w3-round" min="4" id="decklength" value="10" onchange="recalculateDeckBid();">
