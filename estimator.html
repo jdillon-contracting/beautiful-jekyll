@@ -43,14 +43,14 @@ use-site-title: true
     } else if(type_in == 'siding'){
       radio_fence.checked = false;
       decks_radio.checked = false;
+      fence_div.style.display = "none"; 
       deck_div.style.display = "none"; 
-      repair_div.style.display = "none"; 
       siding_div.style.display= "inline";
     } else if(type_in === 'deck'){
       radio_siding.checked = false;
       radio_fence.checked = false;
-      deck_div.style.display = "none";
-      repair_div.style.display = "inline";
+      fence_div.style.display = "none";
+      deck_div.style.display = "inline";
       siding_div.style.display = "none"; 
     }
   }
