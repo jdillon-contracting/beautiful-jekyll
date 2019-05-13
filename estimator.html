@@ -88,13 +88,16 @@ use-site-title: true
     var dwidth = document.getElementById("deckwidth");
     var dlength = document.getElementById("decklength");
     var dlinearrail = document.getElementById("dlinearrail");
+    var dsquareft = document.getElementById("dsqfootage");
     var custom_rail = document.getElementById("dcustomrail"); 
+    var estimate_box = document.getElementById("deck_estimate");
     var square_footage = dlength.value * dwidth.value;
+    dsquareft.value = square_footage;
     var deck_estimate = square_footage * 28;
     if(custom_rail.checked){
      deck_estimate += dlinearrail.value * 18;
     }
-    deck_estimate = '$' + deck_estimate;
+    estimate_box.box = '$' + deck_estimate;
   }
   function recalculateFenceBid()
   {
