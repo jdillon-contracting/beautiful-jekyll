@@ -33,20 +33,20 @@ use-site-title: true
     var siding_div = document.getElementById("div_siding");
     var radio_fence = document.getElementById("fence_radio");
     var radio_siding = document.getElementById("siding_radio");
-    var radio_repair = document.getElementById("repair_radio");
+    var decks_radio = document.getElementById("decks_radio");
     if(type_in == 'fence'){
       radio_siding.checked = false;
-      radio_repair.checked = false;
+      decks_radio.checked = false;
       fence_div.style.display= "inline";
       repair_div.style.display = "none"; 
       siding_div.style.display = "none"; 
     } else if(type_in == 'siding'){
       radio_fence.checked = false;
-      radio_repair.checked = false;
+      decks_radio.checked = false;
       fence_div.style.display = "none"; 
       repair_div.style.display = "none"; 
       siding_div.style.display= "inline";
-    } else if(type_in === 'repair'){
+    } else if(type_in === 'deck'){
       radio_siding.checked = false;
       radio_fence.checked = false;
       fence_div.style.display = "none";
@@ -66,7 +66,15 @@ use-site-title: true
       fence_standard.checked = true;
     }
     recalculateFenceBid();
-  }  
+  }
+  function setDeckType(handrail_type)
+  {
+    
+  }
+  function recalculateDeckBid()
+  {
+    
+  }
   function recalculateFenceBid()
   {
     var fence_standard = document.getElementById("fstandard_radio");
@@ -115,7 +123,7 @@ use-site-title: true
       var phone = document.getElementById("phone");
       var radio_fence = document.getElementById("fence_radio");
       var radio_siding = document.getElementById("siding_radio");
-      var radio_repair = document.getElementById("repair_radio");
+      var decks_radio = document.getElementById("decks_radio");
       var jlocation = document.getElementById("jlocation");
       var job_type = "";
       var estimate = document.getElementById("send_estimate");
@@ -127,8 +135,8 @@ use-site-title: true
       if(radio_siding.checked){
         job_type = "%20siding job!";
       } else 
-      if(radio_repair.checked){
-        job_type = "%20repair job!";
+      if(decks_radio.checked){
+        job_type = "%20deck job!";
       }
       var loc = jlocation.value;
       loc.replace(' ', '%20');
@@ -223,12 +231,19 @@ use-site-title: true
     <h2>Job Type</h2>
   </div>
   <h3><b> 
-  <input type="radio" id="repair_radio" name="job_repair" value="repair" onclick='setJobType("repair")' checked>Decks
-  &nbsp;&nbsp;<input type="radio" id="fence_radio" name="job_fence" value="fence" onclick='setJobType("fence")'> Fences
-  &nbsp;&nbsp;<input type="radio" id="siding_radio" name="job_siding" value="siding" onclick='setJobType("siding")'> Siding
+  <input type="radio" id="decks_radio" value="deck" onclick='setJobType("deck")' checked>Decks
+  &nbsp;&nbsp;<input type="radio" id="fence_radio" value="fence" onclick='setJobType("fence")'> Fences
+  &nbsp;&nbsp;<input type="radio" id="siding_radio" value="siding" onclick='setJobType("siding")'> Siding
   </b></h3>
       <div  id="div_repair" style="display: inline;" >
-        <input type="button" value="Testing Dev Repair">    
+        <input type="number" class="w3-input w3-border w3-round" min="4" id="decksquareft" value="60" onchange="recalculateDeckBid();">
+        <label><b>Square Footage of Deck (Height x Width)</b></label>
+        <input type="number" class="w3-input w3-border w3-round" min="4" id="dlinearrail" value="10" onchange="recalculateDeckBid();">
+        <label><b>Linear Footage of Railing</b></label>
+       <p><h3>Options</h3>
+        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/fence_board_caps.png?raw=true" alt="Fence Post Caps" height="58" width="203" onclick='toggleCustomRailing();'>&nbsp;<input type="checkbox" id="fpostcaps" onchange="recalculateDeckBid();"> +$18 per linear foot of handrail</b></p>
+        <hr>
+        <b>Deck Estimate:</b> <input style="background-color:DimGrey;color:white;" type="text" id="deck_estimate" value="$0.00" readonly><br>
       </div>
       <div  id="div_fence" style="display: none;" >
         <p><img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/Dog-Ear-Fence.jpg?raw=true" alt="Standard Fence" height="63" width="100" onclick='setFenceType("s");' >&nbsp;<input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s");' checked> Standard (Dog Eared) <b>$16.50 per foot</b><br>
