@@ -54,6 +54,12 @@ use-site-title: true
       siding_div.style.display = "none"; 
     }
   }
+  function toggleFenceCaps()
+  {
+    var fenceCaps = document.getElementById("fpostcaps");
+    fpostcaps.checked = !fpostcaps.checked;
+    recalculateFenceBid();
+  }
   function setFenceType(fence_type)
   {
     var fence_standard = document.getElementById("fstandard_radio");
@@ -67,13 +73,28 @@ use-site-title: true
     }
     recalculateFenceBid();
   }
+  function toggleCustomRailing()
+  {
+    var custom_rail_cb = document.getElementById("dcustomrail");
+    custom_rail_cb.checked = !custom_rail_cb.checked;
+    recalculateDeckBid();
+  }
   function setDeckType(handrail_type)
   {
     
   }
   function recalculateDeckBid()
   {
-    
+    var dwidth = document.getElementById("dwidth");
+    var dlength = document.getElementById("decklength");
+    var dlinearrail = document.getElementById("dlinearrail");
+    var custom_rail = document.getElementById("dcustomrail"); 
+    var square_footage = dlength.value * dwidth.value;
+    var deck_estimate = square_footage * 28;
+    if(custom_rail.checked){
+     deck_estimate += dlinearrail.value * 18;
+    }
+    deck_estimate = '$' + deck_estimate;
   }
   function recalculateFenceBid()
   {
@@ -156,12 +177,7 @@ use-site-title: true
       setTimeout(function(){if(open_window !== null){open_window.close();} }, 1200);
     }
   }
-  function toggleFenceCaps()
-  {
-    var fenceCaps = document.getElementById("fpostcaps");
-    fpostcaps.checked = !fpostcaps.checked;
-    recalculateFenceBid();
-  }
+
   function checkContactInformationForm()
   {
       var fname = document.getElementById("fname");
@@ -236,12 +252,15 @@ use-site-title: true
   &nbsp;&nbsp;<input type="radio" id="siding_radio" value="siding" onclick='setJobType("siding")'> Siding
   </b></h3>
       <div  id="div_repair" style="display: inline;" >
-        <input type="number" class="w3-input w3-border w3-round" min="4" id="decksquareft" value="60" onchange="recalculateDeckBid();">
-        <label><b>Square Footage of Deck (Height x Width)</b></label>
+        <input type="number" class="w3-input w3-border w3-round" min="4" id="deckwidth" value="6" onchange="recalculateDeckBid();">
+        <label><b>Width of Deck</b></label>
+        <input type="number" class="w3-input w3-border w3-round" min="4" id="decklength" value="10" onchange="recalculateDeckBid();">
+        <label><b>Length of Deck</b></label
+        <b>Square Footage of Deck ($28 per sq ft includes basic railing):</b> <input style="background-color:DimGrey;color:white;" type="text" id="dsqfootage" value="$0.00" readonly><br>
         <input type="number" class="w3-input w3-border w3-round" min="4" id="dlinearrail" value="10" onchange="recalculateDeckBid();">
         <label><b>Linear Footage of Railing</b></label>
        <p><h3>Options</h3>
-        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/fence_board_caps.png?raw=true" alt="Fence Post Caps" height="58" width="203" onclick='toggleCustomRailing();'>&nbsp;<input type="checkbox" id="fpostcaps" onchange="recalculateDeckBid();"> +$18 per linear foot of handrail</b></p>
+        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/fence_board_caps.png?raw=true" alt="Custom Handrail" height="58" width="203" onclick='toggleCustomRailing();'>&nbsp;<input type="checkbox" id="dcustomrail" onchange="recalculateDeckBid();"> +$18 per linear foot of handrail</b></p>
         <hr>
         <b>Deck Estimate:</b> <input style="background-color:DimGrey;color:white;" type="text" id="deck_estimate" value="$0.00" readonly><br>
       </div>
