@@ -7,25 +7,40 @@ use-site-title: true
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
-  var open_window = null;
-  function setDateToday()
-  {
-    var dateControl = document.querySelector('input[type="date"]');
-    var today = new Date();
-    var month = today.getMonth()+1;
-    var day = today.getDate();
-    
-    var date = today.getFullYear()+'-'
-    if(month < 10){ 
-      month = ('0' + month);
-    }
-    if(day < 10){
-      day = ('0'+ day);
-    }
-    date += (month + '-' + day)
-    dateControl.value = date;
-    recalculateFenceBid();
+  class Estimator{
+      var mCurrentState;
+      var mDateControl;
+      constructor()
+      {
+        this.mDateControl = = document.querySelector('input[type="date"]');
+        this.mCurrentState = 'fence';
+        setDateToday();
+        recalculateFenceBid();
+      }
+      setDateToday()
+      {
+        var today = new Date();
+        var month = today.getMonth()+1;
+        var day = today.getDate();
+
+        var date = today.getFullYear()+'-'
+        if(month < 10){ 
+          month = ('0' + month);
+        }
+        if(day < 10){
+          day = ('0'+ day);
+        }
+        date += (month + '-' + day)
+        this.mDateControl.value = date;
+      }
   }
+  var ESTIMATOR = null;
+  function initializeEstimator()
+  {
+      ESTIMATOR = new Estimator();
+  }
+  var open_window = null;
+  function 
   function setJobType(type_in)
   {
     var fence_div = document.getElementById("div_fence");
@@ -244,7 +259,7 @@ use-site-title: true
     estimator_center.style.display = "inline";
   }
 </script>
-  <body onload="setDateToday();" >
+  <body onload="initializeEstimator();" >
   <div id="estimator_center">
   <div class="w3-container w3-green">
     <h2>Job Type</h2>
