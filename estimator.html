@@ -7,13 +7,33 @@ use-site-title: true
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
+  // Definition of the Estimator Object and member functions
   class Estimator{
-      var mCurrentState;
-      var mDateControl;
       constructor()
       {
+        // General Elements of the HTML
         this.mDateControl = = document.querySelector('input[type="date"]');
+        this.mFenceDiv = document.getElementById("div_fence");
+        this.mDeckDiv = document.getElementById("div_deck");
+        this.mSidingDiv = document.getElementById("div_siding");
+        this.mFenceRadio = document.getElementById("fence_radio");
+        this.mSidingRadio = document.getElementById("siding_radio");
+        this.mDecksRadio = document.getElementById("decks_radio");
+        this.mFenceCaps = document.getElementById("fpostcaps");
+        this.mFenceStandard = document.getElementById("fstandard_radio");
+        this.mFenceCustom = document.getElementById("fcustom_radio");
         this.mCurrentState = 'fence';
+        this.mEmailWindow = null;
+        
+        // DECK SPECIFIC HTML references
+        this.mDeckWidth = document.getElementById("deckwidth");
+        this.mDeckLength = document.getElementById("decklength");
+        this.mDeckRailLength = document.getElementById("dlinearrail");
+        this.mDeckArea = document.getElementById("dsqfootage");
+        this.mCustomRail = document.getElementById("dcustomrail");
+        this.mDeckEstimate = document.getElementById("deck_estimate");
+        
+        
         setDateToday();
         recalculateFenceBid();
       }
@@ -32,87 +52,66 @@ use-site-title: true
         }
         date += (month + '-' + day)
         this.mDateControl.value = date;
+        delete today;
+      }
+      setJobType(type_in)
+      {
+          if(type_in == 'fence'){
+              this.mSidingRadio.checked = false;
+              this.mDecksRadio.checked = false;
+              this.mFenceDiv.style.display= "inline";
+              this.mDeckDiv.style.display = "none"; 
+              this.mSidingDiv.style.display = "none"; 
+          } else if(type_in == 'siding'){
+              this.mFenceRadio.checked = false;
+              this.mDeckRadio.checked = false;
+              this.mFenceDiv.style.display = "none"; 
+              this.mDeckDiv.style.display = "none"; 
+              this.mSidingDiv.style.display= "inline";
+          } else if(type_in === 'deck'){
+              this.mSidingRadio.checked = false;
+              this.mFenceRadio.checked = false;
+              this.mFenceDiv.style.display = "none";
+              this.mDeckDiv.style.display = "inline";
+              this.mSidingDiv.style.display = "none"; 
+          }
+      }
+      toggleFenceCaps()
+      {
+        this.mFenceCaps.checked = !mFenceCaps.checked;
+        recalculateFenceBid();
+      }
+      setFenceType(fence_type)
+      {
+          if(fence_type == 'c'){
+              this.mFenceStnadard.checked = false;
+              this.mFenceCustom.checked = true;
+          } else{
+              this.mFenceCustom.checked = false;
+              this.mFenceStandard.checked = true;
+          }
+          recalculateFenceBid();
+      }
+      toggleCustomRailing()
+      {
+        this.mCustomRail.checked = !this.mCustomRail.checked;
+        recalculateDeckBid();
+      }
+      recalculateDeckBid()
+      {
+          this.mDeckArea.value = this.mDeckLength.value * this.mDeckWidth.value;
+          var deck_estimate = this.mDeckArea.value * 28;
+          if(this.mCustomRail.checked){
+           deck_estimate += this.mDeckRailLength.value * 18;
+          }
+          this.mDeckEstimate.value = '$' + deck_estimate;
       }
   }
   var ESTIMATOR = null;
   function initializeEstimator()
   {
       ESTIMATOR = new Estimator();
-  }
-  var open_window = null;
-  function 
-  function setJobType(type_in)
-  {
-    var fence_div = document.getElementById("div_fence");
-    var deck_div = document.getElementById("div_deck");
-    var siding_div = document.getElementById("div_siding");
-    var radio_fence = document.getElementById("fence_radio");
-    var radio_siding = document.getElementById("siding_radio");
-    var decks_radio = document.getElementById("decks_radio");
-    if(type_in == 'fence'){
-      radio_siding.checked = false;
-      decks_radio.checked = false;
-      fence_div.style.display= "inline";
-      deck_div.style.display = "none"; 
-      siding_div.style.display = "none"; 
-    } else if(type_in == 'siding'){
-      radio_fence.checked = false;
-      decks_radio.checked = false;
-      fence_div.style.display = "none"; 
-      deck_div.style.display = "none"; 
-      siding_div.style.display= "inline";
-    } else if(type_in === 'deck'){
-      radio_siding.checked = false;
-      radio_fence.checked = false;
-      fence_div.style.display = "none";
-      deck_div.style.display = "inline";
-      siding_div.style.display = "none"; 
-    }
-  }
-  function toggleFenceCaps()
-  {
-    var fenceCaps = document.getElementById("fpostcaps");
-    fpostcaps.checked = !fpostcaps.checked;
-    recalculateFenceBid();
-  }
-  function setFenceType(fence_type)
-  {
-    var fence_standard = document.getElementById("fstandard_radio");
-    var fence_custom = document.getElementById("fcustom_radio");
-    if(fence_type == 'c'){
-      fence_standard.checked = false;
-      fence_custom.checked = true;
-    } else{
-      fence_custom.checked = false;
-      fence_standard.checked = true;
-    }
-    recalculateFenceBid();
-  }
-  function toggleCustomRailing()
-  {
-    var custom_rail_cb = document.getElementById("dcustomrail");
-    custom_rail_cb.checked = !custom_rail_cb.checked;
-    recalculateDeckBid();
-  }
-  function setDeckType(handrail_type)
-  {
     
-  }
-  function recalculateDeckBid()
-  {
-    var dwidth = document.getElementById("deckwidth");
-    var dlength = document.getElementById("decklength");
-    var dlinearrail = document.getElementById("dlinearrail");
-    var dsquareft = document.getElementById("dsqfootage");
-    var custom_rail = document.getElementById("dcustomrail"); 
-    var estimate_box = document.getElementById("deck_estimate");
-    var square_footage = dlength.value * dwidth.value;
-    dsquareft.value = square_footage;
-    var deck_estimate = square_footage * 28;
-    if(custom_rail.checked){
-     deck_estimate += dlinearrail.value * 18;
-    }
-    estimate_box.value = '$' + deck_estimate;
   }
   function recalculateFenceBid()
   {
@@ -192,7 +191,6 @@ use-site-title: true
       body_var += "Ideal%20Start%20Date:%20" + dateControl.value + '%0D%0A' + '%0D%0A' + '%0D%0A'+ '%0D%0A';
       var subject_var = fname.value + '%20is%20requesting%20an%20estimate%20for%20a%20' +  estimate_amount + job_type;
       open_window = window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
-      //setTimeout(function(){if(open_window !== null){open_window.close();} }, 1200);
     }
   }
 
