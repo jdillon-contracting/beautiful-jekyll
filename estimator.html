@@ -52,7 +52,6 @@ use-site-title: true
         }
         date += (month + '-' + day)
         this.mDateControl.value = date;
-        delete today;
       }
       setJobType(type_in)
       {
@@ -263,7 +262,7 @@ use-site-title: true
     <h2>Job Type</h2>
   </div>
   <h3><b> 
-  <input type="radio" id="decks_radio" value="deck" onclick='setJobType("deck")' checked>Decks
+  <input type="radio" id="decks_radio" value="deck" onclick='setJobType("deck")' checked> Decks
   &nbsp;&nbsp;<input type="radio" id="fence_radio" value="fence" onclick='setJobType("fence")'> Fences
   &nbsp;&nbsp;<input type="radio" id="siding_radio" value="siding" onclick='setJobType("siding")'> Siding
   </b></h3>
