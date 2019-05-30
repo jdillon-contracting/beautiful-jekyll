@@ -123,8 +123,8 @@ use-site-title: true
             fence_bid = (fence_bid * 16.50);
             this.mEstimateOutput.innerHTML += "standard fence ";
           }
-          if(this.mFencePostCaps.checked){
-            var sections = (fence_feet.value / 8);
+          if(this.mFenceCaps.checked){
+            var sections = (this.mFenceLength.value / 8);
             this.mEstimateOutput.innerHTML += "with post caps ";
             if((sections % 1) >0){
               sections -= (sections %1);
