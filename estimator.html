@@ -19,11 +19,16 @@ use-site-title: true
         this.mFenceRadio = document.getElementById("fence_radio");
         this.mSidingRadio = document.getElementById("siding_radio");
         this.mDecksRadio = document.getElementById("decks_radio");
-        this.mFenceCaps = document.getElementById("fpostcaps");
-        this.mFenceStandard = document.getElementById("fstandard_radio");
-        this.mFenceCustom = document.getElementById("fcustom_radio");
         this.mCurrentState = 'fence';
         this.mEmailWindow = null;
+        this.mEstimateOutput = document.getElementById("estimate_output");
+        
+        // FENCE SPECIFIC HTML References
+        this.mFenceCaps = document.getElementById("fpostcaps");
+        this.mFenceLength = document.getElementById("flinear");
+        this.mFenceStandard = document.getElementById("fstandard_radio");
+        this.mFenceCustom = document.getElementById("fcustom_radio");
+        this.mFenceEstimate = document.getElementById("fence_estimate");
         
         // DECK SPECIFIC HTML references
         this.mDeckWidth = document.getElementById("deckwidth");
@@ -33,9 +38,11 @@ use-site-title: true
         this.mCustomRail = document.getElementById("dcustomrail");
         this.mDeckEstimate = document.getElementById("deck_estimate");
         
-        
-        setDateToday();
-        recalculateFenceBid();
+        // Contact Information
+        this.mSendEstimate = document.getElementById("send_estimate");
+               
+        this.setDateToday();
+        this.recalculateFenceBid();
       }
       setDateToday()
       {
@@ -78,23 +85,23 @@ use-site-title: true
       toggleFenceCaps()
       {
         this.mFenceCaps.checked = !mFenceCaps.checked;
-        recalculateFenceBid();
+        this.recalculateFenceBid();
       }
       setFenceType(fence_type)
       {
           if(fence_type == 'c'){
-              this.mFenceStnadard.checked = false;
+              this.mFenceStandard.checked = false;
               this.mFenceCustom.checked = true;
           } else{
               this.mFenceCustom.checked = false;
               this.mFenceStandard.checked = true;
           }
-          recalculateFenceBid();
+          this.recalculateFenceBid();
       }
       toggleCustomRailing()
       {
         this.mCustomRail.checked = !this.mCustomRail.checked;
-        recalculateDeckBid();
+        this.recalculateDeckBid();
       }
       recalculateDeckBid()
       {
@@ -105,6 +112,29 @@ use-site-title: true
           }
           this.mDeckEstimate.value = '$' + deck_estimate;
       }
+      recalculateFenceBid()
+      {
+          this.mEstimateOutput.innerHTML = "<b>Bid Estimate</b> for a " + this.mFenceLength.value + "-foot long ";
+          var fence_bid = this.mFenceLength.value;
+          if(this.mFenceCustom.checked){
+            fence_bid = (fence_bid * 22.50);
+            this.mEstimateOutput.innerHTML += "custom fence ";
+          } else{
+            fence_bid = (fence_bid * 16.50);
+            this.mEstimateOutput.innerHTML += "standard fence ";
+          }
+          if(this.FencePostCaps.checked){
+            var sections = (fence_feet.value / 8);
+            this.mEstimateOutput.innerHTML += "with post caps ";
+            if((sections % 1) >0){
+              sections -= (sections %1);
+              sections += 1;
+            }
+            fence_bid += ( sections * 9);
+          }
+          this.FenceEstimate.value = '$' + fence_bid;
+          this.SendEstimate.value = '$' + fence_bid;
+      }  
   }
   var ESTIMATOR = null;
   function initializeEstimator()
@@ -112,37 +142,6 @@ use-site-title: true
       ESTIMATOR = new Estimator();
     
   }
-  function recalculateFenceBid()
-  {
-    var fence_standard = document.getElementById("fstandard_radio");
-    var fence_feet = document.getElementById("flinear");
-    var fence_custom = document.getElementById("fcustom_radio");
-    var postcaps = document.getElementById("fpostcaps");
-    var fence_estimate = document.getElementById("fence_estimate");
-    var estimate_output = document.getElementById("estimate_output");
-    estimate_output.innerHTML = "<b>Bid Estimate</b> for a " + fence_feet.value + "-foot long ";
-    var fence_bid = fence_feet.value;
-    if(fence_custom.checked){
-      fence_bid = (fence_bid * 22.50);
-      estimate_output.innerHTML += "custom fence ";
-    } else{
-      fence_bid = (fence_bid * 16.50);
-      estimate_output.innerHTML += "standard fence ";
-    }
-    if(fpostcaps.checked){
-      var sections = (fence_feet.value / 8);
-      estimate_output.innerHTML += "with post caps ";
-      if((sections % 1) >0){
-        sections -= (sections %1);
-        sections += 1;
-      }
-      fence_bid += ( sections * 9);
-    }
-    fence_estimate.value = '$' + fence_bid;
-    var send_estimate = document.getElementById("send_estimate");
-    send_estimate.value = '$' + fence_bid;
-    
-  }  
   function sendEmailEstimate()
   {
     var contact_div = document.getElementById("contact_div");
