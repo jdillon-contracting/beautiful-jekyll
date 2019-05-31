@@ -93,7 +93,7 @@ class Estimator
         this.mSidingDiv = document.getElementById("div_siding");
         this.mFenceRadio = document.getElementById("fence_radio");
         this.mSidingRadio = document.getElementById("siding_radio");
-        this.mDecksRadio = document.getElementById("decks_radio");
+        this.mDeckRadio = document.getElementById("decks_radio");
         this.mCurrentState = 'fence';
         this.mEmailWindow = null;
         this.mEstimate = document.getElementById("estimate_output");
@@ -139,7 +139,7 @@ class Estimator
     {
         if(type_in == 'fence'){
             this.mSidingRadio.checked = false;
-            this.mDecksRadio.checked = false;
+            this.mDeckRadio.checked = false;
             this.mFenceDiv.style.display= "inline";
             this.mDeckDiv.style.display = "none"; 
             this.mSidingDiv.style.display = "none"; 
