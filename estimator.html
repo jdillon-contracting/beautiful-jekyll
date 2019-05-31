@@ -7,10 +7,85 @@ use-site-title: true
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
-  // Definition of the Estimator Object and member functions
-  class Estimator{
-      constructor()
-      {
+// Definition of the Master UI Controller class
+class UIController
+{
+    constructor()
+    {
+      this.mContactDiv = document.getElementById("contact_div");
+      this.mEstimatorDiv = document.getElementById("estimator_center");
+      this.mEditButton = document.getElementById("edit_btn");
+    }
+    backToEstimator()
+    {
+      this.mContactDiv.style.display = "none";
+      this.mEditButton.style.display = "none";
+      this.mEstimatorDiv.style.display = "inline";
+    }
+}
+// Definition of ContactInfo UI class
+class ContactInfo
+{
+    constructor()
+    {
+        this.mFirst = document.getElementById("fname");
+        this.mLast = document.getElementById("lname");
+        this.mLocation = document.getElementById("jlocation");
+        this.mPhone = document.getElementById("phone");
+        this.mSendEstimate = document.getElementById("send_estimate");
+    }
+    checkContactInformationForm()
+    {
+        var ready_to_send = true;
+        if(this.mPhone.value.length == 0){
+          this.mPhone.style = "background-color:red;";
+          ready_to_send = false;
+        }
+        if(this.mFirst.value.length == 0){
+          this.mFirst.style = "background-color:red;";
+          ready_to_send = false;
+        }
+        if(this.mLast.value.length == 0){
+          this.mLast.style = "background-color:red;";
+          ready_to_send = false;
+        }
+        if(this.mLocation.value.length == 0){
+          this.mLocation.style = "background-color:red;";
+          ready_to_send = false;
+        }
+        return ready_to_send; 
+    }
+    updateFirstName()
+    {  
+        if(this.mFirst.value.length > 0){
+          this.mFirst.style = "background-color:white";
+        }
+    }
+    updateLastName()
+    {  
+      if(this.mLast.value.length > 0){
+        this.mLast.style = "background-color:white";
+      }
+    }
+    updatePhone()
+    {  
+      if(this.mPhone.value.length > 0){
+        this.mPhone.style = "background-color:white";
+      }
+    }
+    updateLocation()
+    {  
+      if(this.mLocation.value.length > 0){
+        this.mLocation.style = "background-color:white";
+      }
+    }
+}
+
+// Definition of the Estimator Object and member functions
+class Estimator
+{
+    constructor()
+    {
         // General Elements of the HTML
         this.mDateControl = document.querySelector('input[type="date"]');
         this.mFenceDiv = document.getElementById("div_fence");
@@ -21,15 +96,15 @@ use-site-title: true
         this.mDecksRadio = document.getElementById("decks_radio");
         this.mCurrentState = 'fence';
         this.mEmailWindow = null;
-        this.mEstimateOutput = document.getElementById("estimate_output");
-        
+        this.mEstimate = document.getElementById("estimate_output");
+
         // FENCE SPECIFIC HTML References
         this.mFenceCaps = document.getElementById("fpostcaps");
         this.mFenceLength = document.getElementById("flinear");
         this.mFenceStandard = document.getElementById("fstandard_radio");
         this.mFenceCustom = document.getElementById("fcustom_radio");
         this.mFenceEstimate = document.getElementById("fence_estimate");
-        
+
         // DECK SPECIFIC HTML references
         this.mDeckWidth = document.getElementById("deckwidth");
         this.mDeckLength = document.getElementById("decklength");
@@ -37,223 +112,150 @@ use-site-title: true
         this.mDeckArea = document.getElementById("dsqfootage");
         this.mCustomRail = document.getElementById("dcustomrail");
         this.mDeckEstimate = document.getElementById("deck_estimate");
-        
+
         // Contact Information
         this.mSendEstimate = document.getElementById("send_estimate");
-               
+
         this.setDateToday();
         this.recalculateFenceBid();
-      }
-      setDateToday()
-      {
-        var today = new Date();
-        var month = today.getMonth()+1;
-        var day = today.getDate();
+    }
+    setDateToday()
+    {
+      var today = new Date();
+      var month = today.getMonth()+1;
+      var day = today.getDate();
 
-        var date = today.getFullYear()+'-'
-        if(month < 10){ 
-          month = ('0' + month);
-        }
-        if(day < 10){
-          day = ('0'+ day);
-        }
-        date += (month + '-' + day)
-        this.mDateControl.value = date;
+      var date = today.getFullYear()+'-'
+      if(month < 10){ 
+        month = ('0' + month);
       }
-      setJobType(type_in)
-      {
-          if(type_in == 'fence'){
-              this.mSidingRadio.checked = false;
-              this.mDecksRadio.checked = false;
-              this.mFenceDiv.style.display= "inline";
-              this.mDeckDiv.style.display = "none"; 
-              this.mSidingDiv.style.display = "none"; 
-          } else if(type_in == 'siding'){
-              this.mFenceRadio.checked = false;
-              this.mDeckRadio.checked = false;
-              this.mFenceDiv.style.display = "none"; 
-              this.mDeckDiv.style.display = "none"; 
-              this.mSidingDiv.style.display= "inline";
-          } else if(type_in === 'deck'){
-              this.mSidingRadio.checked = false;
-              this.mFenceRadio.checked = false;
-              this.mFenceDiv.style.display = "none";
-              this.mDeckDiv.style.display = "inline";
-              this.mSidingDiv.style.display = "none"; 
-          }
+      if(day < 10){
+        day = ('0'+ day);
       }
-      toggleFenceCaps()
-      {
-        this.mFenceCaps.checked = !mFenceCaps.checked;
+      date += (month + '-' + day)
+      this.mDateControl.value = date;
+    }
+    setJobType(type_in)
+    {
+        if(type_in == 'fence'){
+            this.mSidingRadio.checked = false;
+            this.mDecksRadio.checked = false;
+            this.mFenceDiv.style.display= "inline";
+            this.mDeckDiv.style.display = "none"; 
+            this.mSidingDiv.style.display = "none"; 
+        } else if(type_in == 'siding'){
+            this.mFenceRadio.checked = false;
+            this.mDeckRadio.checked = false;
+            this.mFenceDiv.style.display = "none"; 
+            this.mDeckDiv.style.display = "none"; 
+            this.mSidingDiv.style.display= "inline";
+        } else if(type_in === 'deck'){
+            this.mSidingRadio.checked = false;
+            this.mFenceRadio.checked = false;
+            this.mFenceDiv.style.display = "none";
+            this.mDeckDiv.style.display = "inline";
+            this.mSidingDiv.style.display = "none"; 
+        }
+    }
+    toggleFenceCaps()
+    {
+      this.mFenceCaps.checked = !this.mFenceCaps.checked;
+      this.recalculateFenceBid();
+    }
+    setFenceType(fence_type)
+    {
+        if(fence_type == 'c'){
+            this.mFenceStandard.checked = false;
+            this.mFenceCustom.checked = true;
+        } else{
+            this.mFenceCustom.checked = false;
+            this.mFenceStandard.checked = true;
+        }
         this.recalculateFenceBid();
-      }
-      setFenceType(fence_type)
-      {
-          if(fence_type == 'c'){
-              this.mFenceStandard.checked = false;
-              this.mFenceCustom.checked = true;
-          } else{
-              this.mFenceCustom.checked = false;
-              this.mFenceStandard.checked = true;
+    }
+    toggleCustomRailing()
+    {
+      this.mCustomRail.checked = !this.mCustomRail.checked;
+      this.recalculateDeckBid();
+    }
+    recalculateDeckBid()
+    {
+        this.mDeckArea.value = this.mDeckLength.value * this.mDeckWidth.value;
+        var deck_estimate = this.mDeckArea.value * 28;
+        if(this.mCustomRail.checked){
+         deck_estimate += this.mDeckRailLength.value * 18;
+        }
+        this.mDeckEstimate.value = '$' + deck_estimate;
+    }
+    recalculateFenceBid()
+    {
+        this.mEstimate.innerHTML = "<b>Bid Estimate</b> for a " + this.mFenceLength.value + "-foot long ";
+        var fence_bid = this.mFenceLength.value;
+        if(this.mFenceCustom.checked){
+          fence_bid = (fence_bid * 22.50);
+          this.mEstimate.innerHTML += "custom fence ";
+        } else{
+          fence_bid = (fence_bid * 16.50);
+          this.mEstimate.innerHTML += "standard fence ";
+        }
+        if(this.mFenceCaps.checked){
+          var sections = (this.mFenceLength.value / 8);
+          this.mEstimate.innerHTML += "with post caps ";
+          if((sections % 1) >0){
+            sections -= (sections %1);
+            sections += 1;
           }
-          this.recalculateFenceBid();
-      }
-      toggleCustomRailing()
-      {
-        this.mCustomRail.checked = !this.mCustomRail.checked;
-        this.recalculateDeckBid();
-      }
-      recalculateDeckBid()
-      {
-          this.mDeckArea.value = this.mDeckLength.value * this.mDeckWidth.value;
-          var deck_estimate = this.mDeckArea.value * 28;
-          if(this.mCustomRail.checked){
-           deck_estimate += this.mDeckRailLength.value * 18;
-          }
-          this.mDeckEstimate.value = '$' + deck_estimate;
-      }
-      recalculateFenceBid()
-      {
-          this.mEstimateOutput.innerHTML = "<b>Bid Estimate</b> for a " + this.mFenceLength.value + "-foot long ";
-          var fence_bid = this.mFenceLength.value;
-          if(this.mFenceCustom.checked){
-            fence_bid = (fence_bid * 22.50);
-            this.mEstimateOutput.innerHTML += "custom fence ";
-          } else{
-            fence_bid = (fence_bid * 16.50);
-            this.mEstimateOutput.innerHTML += "standard fence ";
-          }
-          if(this.mFenceCaps.checked){
-            var sections = (this.mFenceLength.value / 8);
-            this.mEstimateOutput.innerHTML += "with post caps ";
-            if((sections % 1) >0){
-              sections -= (sections %1);
-              sections += 1;
-            }
-            fence_bid += ( sections * 9);
-          }
-          this.mFenceEstimate.value = '$' + fence_bid;
-          this.mSendEstimate.value = '$' + fence_bid;
-      }  
-  }
-  var ESTIMATOR = null;
-  function initializeEstimator()
-  {
-      ESTIMATOR = new Estimator();
-    
-  }
-  function sendEmailEstimate()
-  {
-    var contact_div = document.getElementById("contact_div");
-    var estimator_center = document.getElementById("estimator_center");
-    if(contact_div.style.display == "none"){
-      contact_div.style.display = "inline";
-      var edit_btn = document.getElementById("edit_btn");
-      edit_btn.style.display = "inline";
-      estimator_center.style.display = "none";
-    } else if(checkContactInformationForm()){
-      
-      var fname = document.getElementById("fname");
-      var lname = document.getElementById("lname");
-      var location = document.getElementById("jlocation");
-      var phone = document.getElementById("phone");
-      var radio_fence = document.getElementById("fence_radio");
-      var radio_siding = document.getElementById("siding_radio");
-      var decks_radio = document.getElementById("decks_radio");
-      var jlocation = document.getElementById("jlocation");
+          fence_bid += ( sections * 9);
+        }
+        this.mFenceEstimate.value = '$' + fence_bid;
+        this.mSendEstimate.value = '$' + fence_bid;
+    }  
+}
+var ESTIMATOR = null;
+var CONTACT = null;
+var UICONTROL = null;
+function initializeEstimator()
+{
+    ESTIMATOR = new Estimator();
+    CONTACT = new ContactInfo();
+    UICONTROL = new UIController();
+}
+function sendEmailEstimate()
+{
+    if(UICONTROL.mContactDiv.style.display == "none"){
+      UICONTROL.mContactDiv.style.display = "inline";
+      UICONTROL.mEditButton.style.display = "inline";
+      UICONTROL.mEstimatorDiv.style.display = "none";
+    } else if(CONTACT.checkContactInformationForm()){
       var job_type = "";
-      var estimate = document.getElementById("send_estimate");
-      var estimate_amount = estimate.value;
-      var estimate_output = document.getElementById("estimate_output");
-      if(radio_fence.checked){
+      var estimate_amount = ESTIMATOR.mEstimate.value;
+      if(ESTIMATOR.mFenceRadio.checked){
         job_type = "%20fence job!";
       } else
-      if(radio_siding.checked){
+      if(ESTIMATOR.mSidingRadio.checked){
         job_type = "%20siding job!";
       } else 
-      if(decks_radio.checked){
+      if(ESTIMATOR.mDeckRadio.checked){
         job_type = "%20deck job!";
       }
-      var loc = jlocation.value;
+      var loc = CONTACT.mLocation.value;
       loc.replace(' ', '%20');
-      
-      var estimate_o = estimate_output.innerHTML;
+
+      var estimate_o = ESTIMATOR.mEstimate.innerHTML;
       estimate_o = estimate_o.slice(26);
       estimate_o.replace(' ', '%20');
       var body_var = 'Job%20Location:%20' + loc + '%0D%0A' + 'Job%20Details:%20'+estimate_o + '%0D%0A' +
           "Client%20Should%20add%20more%20details%20and%20attach%20photos%20below:" + '%0D%0A' + '%0D%0A' + '%0D%0A'+ '%0D%0A';
       body_var += "-Contact%20Details-" + '%0D%0A';
-      body_var += "Client%20Name:%20"+ fname.value + "%20" + lname.value + '%0D%0A';
-      body_var += "Phone%20Number:%20" + phone.value + '%0D%0A';
+      body_var += "Client%20Name:%20"+ CONTACT.mFirst.value + "%20" + CONTACT.mLast.value + '%0D%0A';
+      body_var += "Phone%20Number:%20" + CONTACT.mPhone.value + '%0D%0A';
       var dateControl = document.querySelector('input[type="date"]');
       body_var += "Ideal%20Start%20Date:%20" + dateControl.value + '%0D%0A' + '%0D%0A' + '%0D%0A'+ '%0D%0A';
-      var subject_var = fname.value + '%20is%20requesting%20an%20estimate%20for%20a%20' +  estimate_amount + job_type;
+      var subject_var = CONTACT.mFirst.value + '%20is%20requesting%20an%20estimate%20for%20a%20' +  estimate_amount + job_type;
       open_window = window.open('mailto:jessedillonscontracting@hotmail.com?subject='+subject_var+'&body='+body_var);
     }
-  }
+}
 
-  function checkContactInformationForm()
-  {
-      var fname = document.getElementById("fname");
-      var lname = document.getElementById("lname");
-      var location = document.getElementById("jlocation");
-      var phone = document.getElementById("phone");
-      var ready_to_send = true;
-      if(phone.value.length == 0){
-        phone.style = "background-color:red;";
-        ready_to_send = false;
-      }
-      if(fname.value.length == 0){
-        fname.style = "background-color:red;";
-        ready_to_send = false;
-      }
-      if(lname.value.length == 0){
-        lname.style = "background-color:red;";
-        ready_to_send = false;
-      }
-      if(location.value.length == 0){
-        location.style = "background-color:red;";
-        ready_to_send = false;
-      }
-      return ready_to_send; 
-  }
-  function updateFirstName()
-  {  
-    var fname = document.getElementById("fname");
-    if(fname.value.length > 0){
-      fname.style = "background-color:white";
-    }
-  }
-  function updateLastName()
-  {  
-    var lname = document.getElementById("lname");
-    if(lname.value.length > 0){
-      lname.style = "background-color:white";
-    }
-  }
-  function updatePhone()
-  {  
-    var phone = document.getElementById("phone");
-    if(phone.value.length > 0){
-      phone.style = "background-color:white";
-    }
-  }
-  function updateLocation()
-  {  
-    var location = document.getElementById("jlocation");
-    if(location.value.length > 0){
-      location.style = "background-color:white";
-    }
-  }
-  function backToEstimator()
-  {
-    var contact_div = document.getElementById("contact_div");
-    var estimator_center = document.getElementById("estimator_center");
-    var edit_btn = document.getElementById("edit_btn");
-    contact_div.style.display = "none";
-    edit_btn.style.display = "none";
-    estimator_center.style.display = "inline";
-  }
 </script>
   <body onload="initializeEstimator();" >
   <div id="estimator_center">
@@ -313,7 +315,7 @@ use-site-title: true
       </div>
       <input style="background-color:DimGrey;color:white;" type="text" id="send_estimate" value="$0.00" readonly><br>
     </div>
-    <p><button id="edit_btn" type="button" class="w3-btn w3-padding w3-green" style="width:160x;display:none;" onclick="backToEstimator();">< &nbsp; Edit Estimate &nbsp;</button>
+    <p><button id="edit_btn" type="button" class="w3-btn w3-padding w3-green" style="width:160x;display:none;" onclick="UIControl.backToEstimator();">< &nbsp; Edit Estimate &nbsp;</button>
     <button type="button" class="w3-btn w3-padding w3-teal" style="width:120px" onclick="sendEmailEstimate();">Send &nbsp; ❯</button>
     </p>
 </body>
