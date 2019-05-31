@@ -261,30 +261,30 @@ use-site-title: true
     <h2>Job Type</h2>
   </div>
   <h3><b> 
-  <input type="radio" id="decks_radio" value="deck" onclick='setJobType("deck")' checked> Decks
-  &nbsp;&nbsp;<input type="radio" id="fence_radio" value="fence" onclick='setJobType("fence")'> Fences
-  &nbsp;&nbsp;<input type="radio" id="siding_radio" value="siding" onclick='setJobType("siding")'> Siding
+  <input type="radio" id="decks_radio" value="deck" onclick='ESTIMATOR.setJobType("deck")' checked> Decks
+  &nbsp;&nbsp;<input type="radio" id="fence_radio" value="fence" onclick='ESTIMATOR.setJobType("fence")'> Fences
+  &nbsp;&nbsp;<input type="radio" id="siding_radio" value="siding" onclick='ESTIMATOR.setJobType("siding")'> Siding
   </b></h3>
       <div  id="div_deck" style="display: inline;" >
-        <input type="number" class="w3-input w3-border w3-round" min="4" id="deckwidth" value="6" onchange="recalculateDeckBid();">
+        <input type="number" class="w3-input w3-border w3-round" min="4" id="deckwidth" value="6" onchange="ESTIMATOR.recalculateDeckBid();">
         <label><b>Width of Deck</b></label>
-        <input type="number" class="w3-input w3-border w3-round" min="4" id="decklength" value="10" onchange="recalculateDeckBid();">
+        <input type="number" class="w3-input w3-border w3-round" min="4" id="decklength" value="10" onchange="ESTIMATOR.recalculateDeckBid();">
         <label><b>Length of Deck</b></label></br>
         <input style="background-color:DimGrey;color:white;" type="text" id="dsqfootage" value="60" readonly><b>Square Footage of Deck</b> ($28 per sq ft includes basic railing)</br>
-        <input type="number" class="w3-input w3-border w3-round" min="4" id="dlinearrail" value="10" onchange="recalculateDeckBid();">
+        <input type="number" class="w3-input w3-border w3-round" min="4" id="dlinearrail" value="10" onchange="ESTIMATOR.recalculateDeckBid();">
         <label><b>Linear Footage of Railing</b></label>
        <p><h3>Options</h3>
-        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/fence_board_caps.png?raw=true" alt="Custom Handrail" height="58" width="203" onclick='toggleCustomRailing();'>&nbsp;<input type="checkbox" id="dcustomrail" onchange="recalculateDeckBid();"><b>Custom Handrail</b> +$18 per linear foot of handrail</p>
+        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/fence_board_caps.png?raw=true" alt="Custom Handrail" height="58" width="203" onclick='ESTIMATOR.toggleCustomRailing();'>&nbsp;<input type="checkbox" id="dcustomrail" onchange="recalculateDeckBid();"><b>Custom Handrail</b> +$18 per linear foot of handrail</p>
         <hr>
         <b>Deck Estimate:</b> <input style="background-color:DimGrey;color:white;" type="text" id="deck_estimate" value="$1680.00" readonly><br>
       </div>
       <div  id="div_fence" style="display: none;" >
-        <p><img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/Dog-Ear-Fence.jpg?raw=true" alt="Standard Fence" height="63" width="100" onclick='setFenceType("s");' >&nbsp;<input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s");' checked> Standard (Dog Eared) <b>$16.50 per foot</b><br>
-        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/Custom-Fence.png?raw=true" alt="Custom Fence" height="64" width="164" onclick='setFenceType("c");' >&nbsp;<input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <b>$22.50 per foot</b></p>
-        <input type="number" class="w3-input w3-border w3-round" min="1" id="flinear" value="45" onchange="recalculateFenceBid();">
+        <p><img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/Dog-Ear-Fence.jpg?raw=true" alt="Standard Fence" height="63" width="100" onclick='ESTIMATOR.setFenceType("s");' >&nbsp;<input type="radio" id="fstandard_radio" name="fstandard" value="standard" onclick='setFenceType("s");' checked> Standard (Dog Eared) <b>$16.50 per foot</b><br>
+        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/Custom-Fence.png?raw=true" alt="Custom Fence" height="64" width="164" onclick='ESTIMATOR.setFenceType("c");' >&nbsp;<input type="radio" id="fcustom_radio" name="fcustom" value="custom" onclick='setFenceType("c")'> Custom Pattern <b>$22.50 per foot</b></p>
+        <input type="number" class="w3-input w3-border w3-round" min="1" id="flinear" value="45" onchange="ESTIMATOR.recalculateFenceBid();">
         <label><b>Linear Footage (How long in feet)</b></label>
         <p><h3>Options</h3>
-        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/fence_board_caps.png?raw=true" alt="Fence Post Caps" height="58" width="203" onclick='toggleFenceCaps();'>&nbsp;<input type="checkbox" id="fpostcaps" onchange="recalculateFenceBid();"> Fence Caps (8 foot sections) <b>$9 per cap</b></p>
+        <img src="https://github.com/jdillon-contracting/jdillon-contracting.github.io/blob/master/img/fence_board_caps.png?raw=true" alt="Fence Post Caps" height="58" width="203" onclick='ESTIMATOR.toggleFenceCaps();'>&nbsp;<input type="checkbox" id="fpostcaps" onchange="recalculateFenceBid();"> Fence Caps (8 foot sections) <b>$9 per cap</b></p>
         <hr>
         <b>Fence Estimate:</b> <input style="background-color:DimGrey;color:white;" type="text" id="fence_estimate" value="$0.00" readonly><br>
       </div>
